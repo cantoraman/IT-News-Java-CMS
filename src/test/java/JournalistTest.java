@@ -23,4 +23,9 @@ public class JournalistTest {
         journalist.setFirstName("Matt");
         assertEquals("Matt", journalist.getFirstName());
     }
+
+    @Test
+    public void hasLastName(){
+        assertEquals("Hill", journalist.getLastName());
+    }
 }
