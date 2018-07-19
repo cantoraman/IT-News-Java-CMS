@@ -14,12 +14,14 @@ public class Article {
     private String body;
     private String imageURL;
     private Journalist journalist;
+    private Category category;
 
-    public Article(String title, String body, String imageURL, Journalist journalist) {
+    public Article(String title, String body, Category category, Journalist journalist) {
         this.title = title;
         this.body = body;
-        this.imageURL = imageURL;
+        this.category = category;
         this.journalist = journalist;
+
     }
 
     public Article(){}
@@ -49,6 +51,14 @@ public class Article {
     }
     public void setBody(String body) {
         this.body = body;
+    }
+
+    @Column(name="category")
+    public Category getCategory() {
+        return category;
+    }
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Column(name="image")

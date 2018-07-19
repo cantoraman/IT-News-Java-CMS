@@ -18,7 +18,7 @@ public class ArticleTest {
     @Before
     public void setup(){
         Journalist journalist = new Journalist();
-        article = new Article("Elon Musk makes space-pancakes!", "He makes awesome pancakes and hipsters lose their minds.", "/elon.jpg", journalist);
+        article = new Article("Elon Musk makes space-pancakes!", "He makes awesome pancakes and hipsters lose their minds.", Category.TECH, journalist);
     }
 
     @Test
@@ -30,8 +30,8 @@ public class ArticleTest {
         assertEquals("He makes awesome pancakes and hipsters lose their minds.", article.getBody());
     }
     @Test
-    public void hasImage(){
-        assertEquals("/elon.jpg", article.getImageURL());
+    public void hasCategory(){
+        assertEquals(Category.TECH, article.getCategory());
     }
     @Test
     public void hasJournalist(){
