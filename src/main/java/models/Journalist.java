@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -10,7 +11,7 @@ public class Journalist {
     private int id;
     private String firstName;
     private String lastName;
-    private List<Article> articlest;
+    private List<Article> articles;
 
     public Journalist() {
     }
@@ -18,6 +19,7 @@ public class Journalist {
     public Journalist(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.articles = new ArrayList<>();
     }
 
     @Id
@@ -50,11 +52,11 @@ public class Journalist {
     }
 
     @OneToMany(mappedBy = "journalist", fetch = FetchType.LAZY)
-    public List<Article> getArticlest() {
-        return articlest;
+    public List<Article> getArticles() {
+        return articles;
     }
 
-    public void setArticlest(List<Article> articlest) {
-        this.articlest = articlest;
+    public void setArticles(List<Article> articlest) {
+        this.articles = articlest;
     }
 }
