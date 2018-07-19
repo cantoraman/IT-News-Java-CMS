@@ -1,5 +1,5 @@
 import models.Article;
-import models.Categories;
+import models.Category;
 import models.Journalist;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,14 +18,24 @@ public class ArticleTest {
     @Before
     public void setup(){
         Journalist journalist = new Journalist();
-        article = new Article("Elon Musk makes space-pancakes!", "He makes awesome pancakes and hipsters losing their minds.", "/elon.jpg", journalist);
+        article = new Article("Elon Musk makes space-pancakes!", "He makes awesome pancakes and hipsters lose their minds.", "/elon.jpg", journalist);
     }
-
 
     @Test
     public void hasTitle(){
         assertEquals("Elon Musk makes space-pancakes!", article.getTitle());
-
+    }
+    @Test
+    public void hasBody(){
+        assertEquals("He makes awesome pancakes and hipsters lose their minds.", article.getBody());
+    }
+    @Test
+    public void hasImage(){
+        assertEquals("/elon.jpg", article.getImageURL());
+    }
+    @Test
+    public void hasJournalist(){
+        assertEquals(Journalist.class, article.getJournalist().getClass());
     }
 
 
