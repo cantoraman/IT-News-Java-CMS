@@ -28,4 +28,10 @@ public class JournalistTest {
     public void hasLastName(){
         assertEquals("Hill", journalist.getLastName());
     }
+
+    @Test
+    public void canSetLastName(){
+        journalist.setLastName("McAllan");
+        assertEquals("McAllan", journalist.getLastName());
+    }
 }
