@@ -14,6 +14,7 @@ public class Article {
     private String body;
     private String imageURL;
     private Journalist journalist;
+//    private Date date;
     private Category category;
 
     public Article(String title, String body, Category category, Journalist journalist) {
@@ -21,6 +22,7 @@ public class Article {
         this.body = body;
         this.category = category;
         this.journalist = journalist;
+//        this.date = new Date();
 
     }
 
