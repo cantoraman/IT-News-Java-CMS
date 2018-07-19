@@ -61,7 +61,7 @@ public class ArticleController {
             Article newArticle = new Article(title, body, category, journalist);
             DBHelper.save(newArticle);
 
-            res.redirect("/articles");
+            res.redirect("/article");
 
             return null;
         }, new VelocityTemplateEngine());
@@ -71,7 +71,7 @@ public class ArticleController {
         get("/articles/:id", (request, response) -> {
 
             Map<String, Object> model = new HashMap<>();
-            model.put("template", "templates/articles/show.vtl");
+            model.put("template", "templates/article/show.vtl");
             int articleId = Integer.parseInt(request.params(":id"));
             Article article = DBHelper.findById(articleId, Article.class);
             model.put("article", article);
@@ -83,7 +83,7 @@ public class ArticleController {
         get("/articles/:id/edit", (request, response) -> {
 
             Map<String, Object> model = new HashMap<>();
-            model.put("template", "templates/articles/edit.vtl");
+            model.put("template", "templates/article/edit.vtl");
             int articleId = Integer.parseInt(request.params(":id"));
             Article article = DBHelper.findById(articleId, Article.class);
             model.put("article", article);
@@ -111,7 +111,7 @@ public class ArticleController {
             article.setCategory(Category.valueOf(category));
             DBHelper.save(article);
 
-            res.redirect("/articles");
+            res.redirect("/article");
 
             return null;
         }, new VelocityTemplateEngine());
@@ -121,7 +121,7 @@ public class ArticleController {
             Article article = DBHelper.findById(articleId, Article.class);
             DBHelper.delete(article);
 
-            res.redirect("/articles");
+            res.redirect("/article");
 
             return null;
         }, new VelocityTemplateEngine());
