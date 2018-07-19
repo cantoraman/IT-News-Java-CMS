@@ -17,4 +17,10 @@ public class JournalistTest {
     public void hasName(){
         assertEquals("Adam", journalist.getFirstName());
     }
+
+    @Test
+    public void canSteName(){
+        journalist.setFirstName("Matt");
+        assertEquals("Matt", journalist.getFirstName());
+    }
 }
