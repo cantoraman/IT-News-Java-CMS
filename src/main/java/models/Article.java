@@ -59,7 +59,8 @@ public class Article {
         this.imageURL = imageURL;
     }
 
-    @Column(name="journalist")
+    @ManyToOne
+    @JoinColumn(name="journalist_id", nullable = false)
     public Journalist getJournalist() {
         return journalist;
     }
