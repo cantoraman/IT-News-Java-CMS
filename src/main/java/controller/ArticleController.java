@@ -58,8 +58,8 @@ public class ArticleController {
             Category category = Category.valueOf(req.queryParams("category"));
 
 
-            Article newManager = new Article(title, body, category, journalist);
-            DBHelper.save(newManager);
+            Article newArticle = new Article(title, body, category, journalist);
+            DBHelper.save(newArticle);
 
             res.redirect("/articles");
 
