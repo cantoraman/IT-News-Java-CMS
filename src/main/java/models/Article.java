@@ -1,9 +1,21 @@
 package models;
 
 
-
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
+//import org.hibernate.annotations.UpdateTimeStamp;
+
+//import java.time.LocalDate;
+//import java.time.LocalDateTime;
+//import java.util.Date;
+//import java.util.Calendar;
+//import java.sql.Date;
+//import java.sql.Time;
+//import java.sql.Timestamp;
+
+
 
 @Entity
 @Table(name="articles")
@@ -14,15 +26,21 @@ public class Article {
     private String body;
     private String imageURL;
     private Journalist journalist;
-//    private Date date;
     private Category category;
+    //private SimpleDateFormat dateTime;
+    private Date date;
+
 
     public Article(String title, String body, Category category, Journalist journalist) {
         this.title = title;
         this.body = body;
         this.category = category;
         this.journalist = journalist;
-//        this.date = new Date();
+        this.date = new Date();
+//        dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//dd/MM/yyyy
+//        Date now = new Date();
+//        String date = dateTime.format(now);
+
 
     }
 
@@ -71,6 +89,25 @@ public class Article {
         this.imageURL = imageURL;
     }
 
+//    @CreationTimestamp
+//    @Temporal(TemporalType.TIMESTAMP)
+//    public Date getDateTime() {
+//        return dateTime;
+//    }
+//    public void setDateTime(Date dateTime) {
+//        this.dateTime = dateTime;
+//    }
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="date")
+    public Date getCreateDate() {
+        return date;
+    }
+    public void setCreateDate(Date date) {
+        this.date = date;
+    }
+
+
     @ManyToOne
     @JoinColumn(name="journalist_id", nullable = false)
     public Journalist getJournalist() {
@@ -79,6 +116,7 @@ public class Article {
     public void setJournalist(Journalist journalist) {
         this.journalist = journalist;
     }
+
 
 
 }
