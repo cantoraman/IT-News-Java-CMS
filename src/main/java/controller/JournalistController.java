@@ -59,6 +59,17 @@ public class JournalistController {
         }, new VelocityTemplateEngine());
 
 
+        get ("/journalist/:id", (req, res)->{
+            Map<String, Object> model = new HashMap<>();
+            int id = Integer.parseInt(req.params(":id"));
+            Journalist journalist = DBHelper.findById(id, Journalist.class);
+            model.put("journalist", journalist);
+            model.put("template", "templates/journalist/show.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+
+        }, new VelocityTemplateEngine());
+
+
         get("/journalist/:id/edit", (req, res) -> {
             Map<String, Object> model = new HashMap();
             int id = Integer.parseInt(req.params(":id"));
@@ -78,21 +89,12 @@ public class JournalistController {
             Journalist journalist = DBHelper.findById(journalistId, Journalist.class);
             journalist.setName(name);
             journalist.setDescription(description);
-            DBHelper.save(journalist);
+            DBHelper.update(journalist);
             res.redirect("/journalist");
             return null;
 
         }, new VelocityTemplateEngine());
 
-        get ("/journalist/:id", (req, res)->{
-            Map<String, Object> model = new HashMap<>();
-            int id = Integer.parseInt(req.params(":id"));
-            Journalist journalist = DBHelper.findById(id, Journalist.class);
-            model.put("journalist", journalist);
-            model.put("template", "templates/journalist/show.vtl");
-            return new ModelAndView(model, "templates/layout.vtl");
-
-        }, new VelocityTemplateEngine());
 
         post ("/journalist/:id/delete", (req, res) -> {
 

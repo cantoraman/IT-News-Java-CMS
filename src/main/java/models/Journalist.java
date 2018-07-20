@@ -1,5 +1,7 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +53,7 @@ public class Journalist {
         this.description = description;
     }
 
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     @OneToMany(mappedBy = "journalist", fetch = FetchType.LAZY)
     public List<Article> getArticles() {
         return articles;
