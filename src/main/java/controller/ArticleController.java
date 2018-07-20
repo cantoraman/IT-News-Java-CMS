@@ -7,9 +7,7 @@ import models.Journalist;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static spark.Spark.get;
 import static spark.Spark.post;
@@ -42,6 +40,7 @@ public class ArticleController {
             Map<String, Object> model = new HashMap();
             List<Journalist> journalists = DBHelper.getAll(Journalist.class);
             model.put("journalists", journalists);
+            model.put("categories", Category.values());
             model.put("template", "templates/article/create.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
 
@@ -51,17 +50,17 @@ public class ArticleController {
 
         post("/articles", (req, res) -> {
 
-            int journalistId = Integer.parseInt(req.queryParams("journalist"));
+            int journalistId = Integer.parseInt(req.queryParams("journalist_id"));
             Journalist journalist = DBHelper.findById(journalistId, Journalist.class);
             String title = req.queryParams("title");
             String body = req.queryParams("body");
-            Category category = Category.valueOf(req.queryParams("category"));
+            Category category = Category.valueOf(req.queryParams("category_id"));
 
 
             Article newArticle = new Article(title, body, category, journalist);
             DBHelper.save(newArticle);
 
-            res.redirect("/article");
+            res.redirect("/articles");
 
             return null;
         }, new VelocityTemplateEngine());
@@ -111,7 +110,7 @@ public class ArticleController {
             article.setCategory(Category.valueOf(category));
             DBHelper.save(article);
 
-            res.redirect("/article");
+            res.redirect("/articles");
 
             return null;
         }, new VelocityTemplateEngine());

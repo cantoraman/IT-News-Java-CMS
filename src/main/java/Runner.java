@@ -3,6 +3,8 @@ import models.Article;
 import models.Category;
 import models.Journalist;
 
+import java.util.HashMap;
+
 public class Runner {
 
     public static void main(String[] args) {
@@ -19,5 +21,6 @@ public class Runner {
     DBHelper.save(article1);
     DBHelper.save(article2);
     DBHelper.save(article3);
+
     }
 }

@@ -1,5 +1,10 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.List;
+
 public enum Category {
 
     JAVA("Java"),
@@ -25,4 +30,5 @@ public enum Category {
     public String getName(){
         return this.name;
     }
+
 }
