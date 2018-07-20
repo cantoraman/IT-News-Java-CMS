@@ -10,28 +10,28 @@ public class JournalistTest {
 
     @Before
     public void before(){
-        journalist = new Journalist("Adam", "Hill");
+        journalist = new Journalist("Adam Hill", "Adam was born in...");
     }
 
     @Test
     public void hasName(){
-        assertEquals("Adam", journalist.getFirstName());
+        assertEquals("Adam Hill", journalist.getName());
     }
 
     @Test
     public void canSteName(){
-        journalist.setFirstName("Matt");
-        assertEquals("Matt", journalist.getFirstName());
+        journalist.setName("Matt Kinley");
+        assertEquals("Matt Kinley", journalist.getName());
     }
 
     @Test
-    public void hasLastName(){
-        assertEquals("Hill", journalist.getLastName());
+    public void hasDescription(){
+        assertEquals("Adam was born in...", journalist.getDescription());
     }
 
     @Test
-    public void canSetLastName(){
-        journalist.setLastName("McAllan");
-        assertEquals("McAllan", journalist.getLastName());
+    public void canSetDescription(){
+        journalist.setDescription("His dog die in a car accident");
+        assertEquals("His dog die in a car accident", journalist.getDescription());
     }
 }

@@ -72,14 +72,12 @@ public class JournalistController {
         post("/journalist/:id", (req,res) ->{
 
             int journalistId = Integer.parseInt(req.params(":id"));
-            // get firstName from request
-            String firstName = req.queryParams("firstName");
-            //get lastName from request
-            String lastName = req.queryParams("lastName");
+            String name = req.queryParams("name");
+            String description = req.queryParams("description");
 
             Journalist journalist = DBHelper.findById(journalistId, Journalist.class);
-            journalist.setFirstName(firstName);
-            journalist.setLastName(lastName);
+            journalist.setName(name);
+            journalist.setDescription(description);
             DBHelper.save(journalist);
             res.redirect("/journalist");
             return null;

@@ -9,16 +9,16 @@ import java.util.List;
 public class Journalist {
 
     private int id;
-    private String firstName;
-    private String lastName;
+    private String name;
+    private String description;
     private List<Article> articles;
 
     public Journalist() {
     }
 
-    public Journalist(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Journalist(String name, String description) {
+        this.name = name;
+        this.description = description;
         this.articles = new ArrayList<>();
     }
 
@@ -33,22 +33,22 @@ public class Journalist {
         this.id = id;
     }
 
-    @Column(name = "first_name")
-    public String getFirstName() {
-        return firstName;
+    @Column(name = "name")
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Column(name = "last_name")
-    public String getLastName() {
-        return lastName;
+    @Column(name = "description")
+    public String getDescription() {
+        return description;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @OneToMany(mappedBy = "journalist", fetch = FetchType.LAZY)
