@@ -9,27 +9,30 @@ import java.util.Map;
 
 import static spark.Spark.get;
 
-public class Controller {
 
-    public static void main(String[] args) {
-        Seeds.seedData();
+    public class Controller {
 
-
-        ArticleController articleController = new ArticleController();
-        JournalistController journalistController = new JournalistController();
+        public static void main(String[] args) {
+            Seeds.seedData();
 
 
-        get("/", (req, res) -> {
+            ArticleController articleController = new ArticleController();
+            JournalistController journalistController = new JournalistController();
 
-            Map<String, Object> model = new HashMap();
-            model.put("template", "templates/index.vtl");
-            return new ModelAndView(model, "templates/layout.vtl");
-        }, new VelocityTemplateEngine());
+
+            get("/", (req, res) -> {
+
+                Map<String, Object> model = new HashMap();
+                model.put("template", "templates/index.vtl");
+                return new ModelAndView(model, "templates/layout.vtl");
+            }, new VelocityTemplateEngine());
+
+
+        }
 
 
     }
 
-}
 
 
 

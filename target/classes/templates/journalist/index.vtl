@@ -1,0 +1,27 @@
+<p class = "pageHeader"> All Journalist </p>
+
+
+<div>
+    <a href="/journalist/new" class="button center">Add Journalist</a>
+</div>
+<div class="container">
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Description</th>
+        </tr>
+        #foreach($journalist in $journalists)
+        <tr>
+            <td><a href="/journalist/$journalist.getId()">$journalist.getName()</a></td>
+            <td><a href="/journalist/$journalist.getId()">$journalist.getDescription()</a></td>
+            <td><a href="/journalist/$journalist.getId()/edit">edit</a></td>
+            <td>
+                <form method="post" action="/managers/$manager.getId()/delete">
+                    <input type="submit" value="Delete">
+
+                </form>
+            </td>
+        </tr>
+        #end
+    </table>
+</div>

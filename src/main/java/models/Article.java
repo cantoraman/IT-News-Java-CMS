@@ -1,6 +1,8 @@
 package models;
 
 
+import java.text.SimpleDateFormat;
+import org.junit.validator.ValidateWith;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,13 +16,16 @@ public class Article {
     private String body;
     private String imageURL;
     private Journalist journalist;
+    private Date date;
     private Category category;
+
 
     public Article(String title, String body, Category category, Journalist journalist) {
         this.title = title;
         this.body = body;
         this.category = category;
         this.journalist = journalist;
+        this.date = new Date();
 
     }
 
@@ -78,5 +83,16 @@ public class Article {
         this.journalist = journalist;
     }
 
+    @Column(name = "date")
+    public Date getDate() {
+        return date;
+    }
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
+    public String DateForUser() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        return sdf.format(date);
+    }
 }
