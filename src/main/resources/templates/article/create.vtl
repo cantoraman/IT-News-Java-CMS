@@ -1,0 +1,41 @@
+<h1>New Article</h1>
+
+
+<form action="/articles" method="post">
+    <label for="title">Title</label>
+    <input type="text" id ="title" name="title" required>
+
+    <label for="body">Body</label>
+    <textarea rows="50" cols="50" name="body" maxlength="250" id="body" required/>
+    </textarea>
+
+    <label for="category_id">Category</label>
+        <select name="category_id" id="category_id">
+            #foreach ( $category in $categories )
+            <option value="$category.id">$category.getName()</option>
+            #end
+        </select>
+        <a href="/categories/new">New Category</a>
+
+
+   <label for="journalist_id">Category</label>
+        <select name="journalist_id" id="journalist_id">
+            #foreach ( $journalist in $journalists )
+            <option value="$journalist.id">$journalist.getName()</option>
+            #end
+        </select>
+        <a href="/categories/new">New Category</a>
+
+
+
+
+
+    <label for="picture">Choose file to upload</label>
+    <input type="file" id="picture" name="picture" accept="image/png, image/jpeg">
+
+
+
+
+    <input type="submit" value="Save">
+
+</form>
