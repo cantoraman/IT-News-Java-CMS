@@ -1,0 +1,13 @@
+<h1>Editing $journalist.getName()</h1>
+
+<form action="/journalist/$journalist.getId()" method="post">
+
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="full_name" placeholder="$journalist.getName()" required>
+
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" placeholder="$journalist.getDescription()">
+
+    <input type="submit" value="Save Changes" class="button">
+
+</form>
