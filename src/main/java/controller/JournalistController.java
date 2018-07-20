@@ -46,11 +46,11 @@ public class JournalistController {
 
         post("/journalist", (req, res) -> {
 
-            String first_name = req.queryParams("first_name");
-            String last_name = req.queryParams("last_name");
+            String name = req.queryParams("name");
+            String description = req.queryParams("description");
 
 
-            Journalist newJournalist = new Journalist(first_name, last_name);
+            Journalist newJournalist = new Journalist(name, description);
             DBHelper.save(newJournalist);
 
             res.redirect("/journalist");
