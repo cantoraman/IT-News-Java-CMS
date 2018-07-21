@@ -28,6 +28,7 @@ public class ArticleController {
             model.put("template", "templates/article/index.vtl");
 
             List<Article> articles = DBHelper.getAll(Article.class);
+            Article.orderListByDate(articles);
             model.put("articles", articles);
             return new ModelAndView(model, "templates/layout.vtl");
 

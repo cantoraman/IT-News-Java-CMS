@@ -5,7 +5,10 @@ import org.hibernate.annotations.Cascade;
 
 import java.text.SimpleDateFormat;
 import javax.persistence.*;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="articles")
@@ -30,6 +33,26 @@ public class Article {
     }
 
     public Article(){}
+
+    public static void orderListByDate(List<Article> articles) {
+        Collections.sort(articles, articleComparator);
+    }
+
+    public static Comparator<Article> articleComparator
+            = new Comparator<Article>() {
+
+        public int compare(Article article1, Article article2) {
+
+            Date articleDate1 = article1.getDate();
+            Date articleDate2 = article2.getDate();
+
+            //ascending order
+            //return articleDate1.compareTo(articleDate2);
+
+            //descending order
+            return articleDate2.compareTo(articleDate1);
+        }
+    };
 
 
     @Id
@@ -91,7 +114,7 @@ public class Article {
         this.date = date;
     }
 
-    public String DateForUser() {
+    public String giveUserFriendlyDate() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         return sdf.format(date);
     }
