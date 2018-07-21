@@ -1,0 +1,49 @@
+<h1>Edit Article</h1>
+
+
+<div>
+
+
+    <form action="/manage/articles/$article.getId()" method="post">
+        <label for="title">Title</label>
+        <br>
+        <input type="text" id ="title" name="title" value="$article.getTitle()" required>
+        <br>
+        <label for="body">Body</label>
+        <br>
+        <textarea rows="20" cols="100" name="body" maxlength="250" id="body" required/>$article.getBody()</textarea>
+        <br>
+        <label for="category_id">Category</label>
+        <br>
+        <select name="category_id" id="category_id">
+            #foreach ( $category in $categories )
+            <option value="$category">$category</option>
+            #end
+        </select>
+        <br>
+
+
+        <!--<label for="journalist_id">Journalist</label>
+        <br>
+        <select name="journalist_id" id="journalist_id">
+            #foreach ( $journalist in $journalists )
+            <option value="$journalist.id">$journalist.getName()</option>
+            #end
+        </select>-->
+
+        <br>
+        <input type="submit" value="Save">
+
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+</div>

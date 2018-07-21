@@ -18,6 +18,7 @@ import static spark.Spark.get;
 
             ArticleController articleController = new ArticleController();
             JournalistController journalistController = new JournalistController();
+            ManageController manageController = new ManageController();
 
 
             get("/", (req, res) -> {

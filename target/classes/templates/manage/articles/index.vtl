@@ -1,0 +1,26 @@
+<h1>Edit Articles</h1>
+
+<div>
+    <a href="/articles/new">New Article</a>
+    <table>
+
+
+
+
+        #foreach($article in $articles)
+        <tr>
+            <td> <a href="/articles/$article.getId()"> $article.getTitle()</a></td> <td><a href="/journalists/$article.getJournalist().getId()"> $article.getJournalist().getName()</a></td><td>$article.giveUserFriendlyDate()</td><td><a href="/manage/articles/$article.getId()/edit">EDIT</a></td>
+
+        </tr>
+        #end
+
+
+
+    </table>
+
+
+
+
+
+
+</div>
