@@ -10,12 +10,20 @@
 
 .main-body{
   background-color: yellow;
-  height: 1em;
+
   width: 70%;
 }
 
 .right-menu-body{
+
   background-color: blue;
-  height: 1em;
+  height: 84.5vh;
   width: 30%;
+  position: static;
+}
+
+.menu{
+  height: 80%;
+  margin: 10%;
+  background-color: grey;
 }

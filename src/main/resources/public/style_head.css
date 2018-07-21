@@ -6,6 +6,9 @@
 .container-head{
   display: flex;
   flex-flow: row;
+	position: static;
+	height: fit-content;
+	position: static;
 }
 
 .main {
