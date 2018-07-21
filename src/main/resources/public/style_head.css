@@ -3,7 +3,7 @@
 	padding: 0px;
 }
 
-.container {
+.container-head{
   display: flex;
   flex-flow: row;
 }
@@ -15,6 +15,7 @@
   flex-direction: column;
   flex: 1;
 }
+
 .col{
 	padding-left: 1.3em;
 	height: auto;

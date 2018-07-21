@@ -1,0 +1,21 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+.body{
+  display: flex;
+  flex-flow: row;
+}
+
+.main-body{
+  background-color: yellow;
+  height: 1em;
+  width: 70%;
+}
+
+.right-menu-body{
+  background-color: blue;
+  height: 1em;
+  width: 30%;
+}

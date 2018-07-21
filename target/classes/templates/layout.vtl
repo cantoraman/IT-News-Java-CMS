@@ -3,26 +3,27 @@
 <head>
     <title>ITnews</title>
     <link rel="stylesheet" href="/style_head.css">
+    <link rel="stylesheet" href="/style_body.css">
 </head>
 
 
 <body>
-<header class="container">
+<header class="container-head">
     <section class="main">
         <div class="col top"><h1>ITnews.co.uk</h1></div>
         <div class="col middle"><h5>The future is happening.</h5></div>
 
         <ul>
-            <li><a href="#home">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li class="dropdown">
                 <a class="dropbtn">Categories</a>
                 <div class="dropdown-content">
                     <a href="#">Link 1</a>
                     <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
+                    <a href="/categories">See all..</a>
                 </div>
             </li>
-            <li><a href="#news">Journalist</a></li>
+            <li><a href="/journalist">Journalist</a></li>
             <li class="dropdown" style="float:right">
                 <a class="dropbtn">Manage</a>
                 <div class="dropdown-content">
@@ -35,7 +36,7 @@
     </section>
 </header>
 <!-- begin inner template-->
-<div class="container">
+<div class="container-body">
     #parse( $template )
 </div>
 <!-- end inner template-->
