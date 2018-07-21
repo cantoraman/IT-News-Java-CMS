@@ -8,11 +8,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static spark.Spark.get;
+import static spark.SparkBase.staticFileLocation;
 
 
-    public class Controller {
+public class Controller {
 
         public static void main(String[] args) {
+            VelocityTemplateEngine velocityTemplateEngine = new VelocityTemplateEngine();
+            staticFileLocation("/public");
             Seeds.seedData();
 
 
@@ -25,7 +28,7 @@ import static spark.Spark.get;
                 Map<String, Object> model = new HashMap();
                 model.put("template", "templates/index.vtl");
                 return new ModelAndView(model, "templates/layout.vtl");
-            }, new VelocityTemplateEngine());
+            }, velocityTemplateEngine);
 
 
         }

@@ -4,25 +4,36 @@
     <title>ITnews</title>
     <link rel="stylesheet" href="/style_head.css">
 </head>
-<header class="main-header">
 
-    <a class="logo-head" href="/">
-        <span class="site-name">ITnews</span>
-        <span class="site-desc">The future is NOW.</span>
-    </a>
-
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Categories</a></li>
-            <li><a href="#">Journalist</a></li>
-            <li><a href="#">Manage</a></li>
-        </ul>
-    </nav>
-
-</header>
 
 <body>
+<header class="container">
+    <section class="main">
+        <div class="col top"><h1>ITnews.co.uk</h1></div>
+        <div class="col middle"><h5>The future is happening.</h5></div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li class="dropdown">
+                <a class="dropbtn">Categories</a>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </li>
+            <li><a href="#news">Journalist</a></li>
+            <li class="dropdown" style="float:right">
+                <a class="dropbtn">Manage</a>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </li>
+        </ul>
+    </section>
+</header>
 <!-- begin inner template-->
 <div class="container">
     #parse( $template )
