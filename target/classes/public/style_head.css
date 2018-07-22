@@ -12,8 +12,8 @@
 }
 
 .main {
-  width: 60%;
-  background-color: red;
+  width: 100%;
+  background-color: #1B1D42;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -28,7 +28,7 @@
 		padding-top: 0.4em;
   }
 
-.col, .top {
+.cols, .top {
 	color: white;
 }
 .middle {
@@ -94,4 +94,36 @@ li.dropdown {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+footer {
+  height: 100px;
+}
+
+article {
+	-webkit-box-flex: 4.5;
+	-moz-box-flex: 4.5;
+	-ms-box-flex: 4.5;
+	box-flex: 4.5;
+
+	-webkit-flex: 4.5;
+	-moz-flex: 4.5;
+	-ms-flex: 4.5;
+	flex: 4.5;
+
+	margin-top: 1rem;
+}
+
+aside{
+	-webkit-box-flex: 1.5;
+	-moz-box-flex: 1.5;
+	-ms-box-flex: 1.5;
+	box-flex: 1.5;
+
+	-webkit-flex: 1.5;
+	-moz-flex: 1.5;
+	-ms-flex: 1.5;
+	flex: 1.5;
+
+	margin-top: 1rem;
 }
