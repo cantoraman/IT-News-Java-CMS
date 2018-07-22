@@ -7,8 +7,9 @@
   border: 1px solid black;
   padding: 0.75em;
   margin: 0.75em;
+  margin-top: 2rem;
   border-radius: 1em;
-  background-color: #EBB178
+  background-color: #a59db6;
 }
 
 html, body, .viewport {
@@ -75,10 +76,9 @@ html, body, .viewport {
 .search{
   float: right;
   border: none;
-  margin-left: 14px;
   margin-top: 8px;
   font-size: 17px;
-  tab-size:
+  justify-content: center;
 }
 
 #search-input{
@@ -86,14 +86,13 @@ html, body, .viewport {
   margin-top: 8px;
   font-size: 17px;
   border: none;
-  width: 55%;
+  width: auto;
 }
 
 #search-button{
   float: none;
   padding: 6px 8px;
   margin-top: 8px;
-  margin-right: 16px;
   background: #ddd;
   font-size: 17px;
   border: none;

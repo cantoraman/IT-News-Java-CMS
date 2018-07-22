@@ -13,7 +13,7 @@
 
 .main {
   width: 100%;
-  background-color: #1B1D42;
+  background-color: white;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -24,7 +24,7 @@
 	height: auto;
 }
 .top {
-    background: black;
+    background: #4D6D9A;
 		padding-top: 0.4em;
   }
 
@@ -32,7 +32,7 @@
 	color: white;
 }
 .middle {
-    background: black;
+    background: #4D6D9A;
 		padding-bottom: 0.5em;
   }
 
@@ -49,7 +49,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #86B3D1;
 		padding-left: 20px
 }
 
@@ -66,7 +66,7 @@ li a, .dropbtn {
 }
 
 li a:hover, .dropdown:hover .dropbtn {
-    background-color: red;
+    background-color: #99CDE3;
 }
 
 li.dropdown {
@@ -97,7 +97,8 @@ li.dropdown {
 }
 
 footer {
-  height: 100px;
+  height: 80px;
+	background: #86B3D1;
 }
 
 article {
