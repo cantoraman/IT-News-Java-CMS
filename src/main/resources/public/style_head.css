@@ -13,11 +13,7 @@
 
 .main {
   width: 100%;
-<<<<<<< HEAD
-  background-color: #1B1D42;
-=======
   background-color: white;
->>>>>>> feature/headercss
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -28,11 +24,7 @@
 	height: auto;
 }
 .top {
-<<<<<<< HEAD
-    background: black;
-=======
     background: #4D6D9A;
->>>>>>> feature/headercss
 		padding-top: 0.4em;
   }
 
@@ -40,11 +32,7 @@
 	color: white;
 }
 .middle {
-<<<<<<< HEAD
-    background: black;
-=======
     background: #4D6D9A;
->>>>>>> feature/headercss
 		padding-bottom: 0.5em;
   }
 
@@ -61,11 +49,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-<<<<<<< HEAD
-    background-color: #333;
-=======
     background-color: #86B3D1;
->>>>>>> feature/headercss
 		padding-left: 20px
 }
 
@@ -82,11 +66,7 @@ li a, .dropbtn {
 }
 
 li a:hover, .dropdown:hover .dropbtn {
-<<<<<<< HEAD
-    background-color: red;
-=======
     background-color: #99CDE3;
->>>>>>> feature/headercss
 }
 
 li.dropdown {
@@ -117,12 +97,8 @@ li.dropdown {
 }
 
 footer {
-<<<<<<< HEAD
-  height: 100px;
-=======
   height: 80px;
 	background: #86B3D1;
->>>>>>> feature/headercss
 }
 
 article {
