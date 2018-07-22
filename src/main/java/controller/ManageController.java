@@ -16,11 +16,10 @@ import static spark.Spark.post;
 
 public class ManageController {
 
-    public ManageController(){
+    public ManageController() {
         this.setupEndPoints();
 
     }
-
 
 
     public void setupEndPoints() {
@@ -37,7 +36,7 @@ public class ManageController {
         }, new VelocityTemplateEngine());
 
 
-            get("/manage/articles/:id/edit", (request, response) -> {
+        get("/manage/articles/:id/edit", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/manage/articles/edit.vtl");
             int articleId = Integer.parseInt(request.params(":id"));
@@ -49,7 +48,6 @@ public class ManageController {
             return new ModelAndView(model, "templates/layout.vtl");
 
         }, new VelocityTemplateEngine());
-
 
 
         post("/manage/articles/:id", (req, res) -> {
@@ -74,7 +72,7 @@ public class ManageController {
             return null;
         }, new VelocityTemplateEngine());
 
-        post("/articles/:id/delete", (req, res) -> {
+        post("/manage/articles/:id/delete", (req, res) -> {
             int articleId = Integer.parseInt(req.params(":id"));
             Article article = DBHelper.findById(articleId, Article.class);
             DBHelper.delete(article);
@@ -85,17 +83,7 @@ public class ManageController {
         }, new VelocityTemplateEngine());
 
 
-
-
-
-
-
-
-
-
-
     }
-
 
 
 }

@@ -1,0 +1,29 @@
+<h1>Articles In $category Category</h1>
+
+
+<div>
+
+    <table>
+
+        #foreach($article in $articles)
+        <tr>
+            <td> <a href="/articles/$article.getId()"> $article.getTitle()</a></td> <td><a href="/journalists/$article.getJournalist().getId()"> $article.getJournalist().getName()</a></td><td>$article.giveUserFriendlyDate()</td>
+
+        </tr>
+        #end
+
+
+
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+</div>
