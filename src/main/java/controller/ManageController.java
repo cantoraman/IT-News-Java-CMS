@@ -53,9 +53,10 @@ public class ManageController {
             model.put("template", "templates/manage/articles/edit.vtl");
             int articleId = Integer.parseInt(request.params(":id"));
             Article article = DBHelper.findById(articleId, Article.class);
+            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
+
             model.put("article", article);
             model.put("categories", Category.values());
-            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
             model.put("journalists", journalists);
             return new ModelAndView(model, "templates/layout.vtl");
 

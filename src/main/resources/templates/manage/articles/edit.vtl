@@ -1,54 +1,43 @@
-<h1>Edit Article</h1>
+<div class="row">
+    <div class="col col-span-1"><h1>Edit</h1></div>
+</div>
+<div class="row">
+    <div class="col col-span-1">
+        <form action="/manage/articles/$article.getId()" method="post">
 
+            <p><label for="title">Title</label></p>
+            <p><input type="text" class="title-edit-article" id ="title" name="title" value="$article.getTitle()" required></p>
+            <br>
+            <p><label for="artibody">Body</label></p>
+            <p><textarea name="body" id="artibody" required/>$article.getBody()</textarea></p>
 
-<div>
+            <table>
+                <tr>
+                    <td><label for="category_id">Category</label></td>
+                    <td><label for="journalist_id">Journalist</label></td>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="category_id" id="category_id">
+                            #foreach ( $category in $categories )
+                            <option value="$category" #if($category == $article.getCategory()) selected #end>$category</option>
+                            #end
+                        </select>
+                    </td>
+                    <td>
+                        <select name="journalist_id" id="journalist_id">
+                            #foreach ( $journalist in $journalists )
+                                <option value="$journalist.id" #if($journalist.getId() == $article.getJournalist().getId()) selected #end>$journalist.getName()</option>
+                            #end
+                        </select>
+                    </td>
+                </tr>
+            </table>
 
+            <br>
+            <input type="submit" value="Save">
 
-    <form action="/manage/articles/$article.getId()" method="post">
-        <label for="title">Title</label>
-        <br>
-        <input type="text" id ="title" name="title" value="$article.getTitle()" required>
-        <br>
-        <label for="body">Body</label>
-        <br>
-        <textarea rows="20" cols="100" name="body" maxlength="250" id="body" required/>$article.getBody()</textarea>
-        <br>
-        <label for="category_id">Category</label>
-        <br>
-        <select name="category_id" id="category_id">
-            #foreach ( $category in $categories )
-            <option value="$category" #if($category == $article.getCategory())
-                                        selected
-                                        #end
-            >$category</option>
-            #end
-            <!---->
-            <!--add default selector here-->
-        </select>
-        <br>
+        </form>
 
-
-        <!--<label for="journalist_id">Journalist</label>
-        <br>
-        <select name="journalist_id" id="journalist_id">
-            #foreach ( $journalist in $journalists )
-            <option value="$journalist.id">$journalist.getName()</option>
-            #end
-        </select>-->
-
-        <br>
-        <input type="submit" value="Save">
-
-    </form>
-
-
-
-
-
-
-
-
-
-
-
+    </div>
 </div>

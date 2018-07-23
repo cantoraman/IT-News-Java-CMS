@@ -86,7 +86,7 @@ public class JournalistController {
             journalist.setName(name);
             journalist.setDescription(description);
             DBHelper.update(journalist);
-            res.redirect("/journalist");
+            res.redirect("/manage/journalist");
             return null;
 
         }, new VelocityTemplateEngine());

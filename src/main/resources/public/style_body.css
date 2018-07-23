@@ -133,10 +133,12 @@ html, body, .viewport {
   border-spacing: 2%;
 }
 
-#description{
+#description, #artibody{
   width: 98%;
-  height: 10em;
-  display: table;
+  height: 17em;
+  overflow: auto;
+  display: flex;
+  resize: none;
   font-size: 16px;
   padding-top: 8px;
 }
@@ -178,4 +180,8 @@ table{
   float: right;
   flex-direction: row-reverse;
   width: 5em;
+}
+
+.title-edit-article{
+  width: 98%;
 }
