@@ -1,17 +1,23 @@
-<h1>Journalist</h1>
-
-
-<div>
-
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-        </tr>
-        <tr>
-            <td>$journalist.getName()</td>
-            <td>$journalist.getDescription()</td>
-        </tr>
-    </table>
-
+<div class="row">
+    <div class="col col-span-1"><h1>$journalist.getName()</h1></div>
+</div>
+<div class="row">
+    <div class="col col-span-1">$journalist.getDescription()</div>
+</div>
+<div class="row">
+    <div class="col col-span-1"><h2>Articles</h2>
+        <table>
+            #foreach ($article in $articles)
+                <tr>
+                    <a href=""></a>
+                    <td class="article-journalist-title"><strong>$article.getTitle()</strong></td>
+                    </a>
+                    <td class="article-journalist-title" style="float:right">$article.giveUserFriendlyDate()</td>
+                    </tr>
+                <tr>
+                    <td class="article-journalist-body">$article.getBody()</td>
+                </tr>
+            #end
+        </table>
+    </div>
 </div>

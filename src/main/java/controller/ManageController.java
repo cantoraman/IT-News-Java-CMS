@@ -36,6 +36,18 @@ public class ManageController {
         }, new VelocityTemplateEngine());
 
 
+        get("/manage/journalist", (req, res) -> {
+
+            Map<String, Object> model = new HashMap();
+            model.put("template", "templates/manage/journalists/index.vtl");
+
+            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
+            model.put("journalists", journalists);
+            return new ModelAndView(model, "templates/layout.vtl");
+
+        }, new VelocityTemplateEngine());
+
+
         get("/manage/articles/:id/edit", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/manage/articles/edit.vtl");
