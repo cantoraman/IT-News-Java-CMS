@@ -147,14 +147,12 @@ html, body, .viewport {
 }
 
 .article-journalist-title{
-  background-color: white;
   padding: 0.5em;
   text-decoration: underline;
   color: blue;
 }
 
 .article-journalist-body{
-  background-color: white;
   padding-left: 2em;
   padding-bottom: 1em;
   border-bottom: 1px solid black;
@@ -168,7 +166,6 @@ h2{
 }
 
 table{
-  background-color: white;
   width: 100%;
   float: center;
 }

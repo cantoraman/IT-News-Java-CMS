@@ -9,9 +9,9 @@
         <table>
             #foreach ($article in $articles)
                 <tr>
-                    <a href=""></a>
-                    <td class="article-journalist-title"><strong>$article.getTitle()</strong></td>
-                    </a>
+
+                    <td class="article-journalist-title"><strong><a href="/articles/$article.getId()">$article.getTitle()</a></strong></td>
+
                     <td class="article-journalist-title" style="float:right">$article.giveUserFriendlyDate()</td>
                     </tr>
                 <tr>
