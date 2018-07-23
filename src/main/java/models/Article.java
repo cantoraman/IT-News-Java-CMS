@@ -137,7 +137,7 @@ public class Article {
         setLikes(getLikes()+1);
     }
     public void dislikeArticle(){
-        setLikes(getLikes()-1);
+        setDislikes(getDislikes()+1);
     }
 
     public String giveUserFriendlyDate() {
