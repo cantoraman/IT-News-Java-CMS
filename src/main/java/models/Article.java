@@ -1,14 +1,12 @@
 package models;
 
 
+import org.apache.commons.lang.time.DateUtils;
 import org.hibernate.annotations.Cascade;
 
 import java.text.SimpleDateFormat;
 import javax.persistence.*;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name="articles")
@@ -57,8 +55,25 @@ public class Article {
         }
     };
 
-    public static void orderListByPopularity(List<Article> articles) {
-        Collections.sort(articles, articlePopularityComparator);
+
+
+
+    public static List<Article> orderListByPopularity(List<Article> articles, int days) {
+        Date today = new Date();
+        Date newDate = DateUtils.addDays(today,-days);
+        ArrayList<Article> limitedArticles= new ArrayList<>();
+        for(Article article : articles){
+            if (!article.getDate().before(newDate))
+                limitedArticles.add(article);
+
+        }
+
+        Collections.sort(limitedArticles, articlePopularityComparator);
+        if (limitedArticles.size()<3){
+            Article.orderListByDate(articles);
+            return articles;
+        }
+        return limitedArticles;
     }
 
     public static Comparator<Article> articlePopularityComparator
