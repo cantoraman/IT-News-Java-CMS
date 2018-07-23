@@ -9,9 +9,9 @@
 
         #foreach($article in $articles)
         <tr>
-            <td> <a href="/articles/$article.getId()"> $article.getTitle()</a></td>
+            <td> <a href="/manage/articles/$article.getId()/edit"> $article.getTitle()</a></td>
             <td><a href="/journalists/$article.getJournalist().getId()"> $article.getJournalist().getName()</a>
-            </td><td>$article.giveUserFriendlyDate()</td>
+            </td><td>$article.getDate()</td>
             <td><a href="/manage/articles/$article.getId()/edit">EDIT</a></td>
             <td>
                 <form method="post" action="/manage/articles/$article.getId()/delete">
