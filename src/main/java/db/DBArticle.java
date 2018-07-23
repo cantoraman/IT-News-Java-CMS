@@ -2,6 +2,7 @@ package db;
 
 import models.Article;
 import models.Category;
+import models.Journalist;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -44,6 +45,25 @@ public class DBArticle {
         }
         return results;
     }
+
+//    public static List<Article> getAllByJournalist(Journalist journalist) {
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        List<Article> results = null;
+//        try {
+//            Criteria cr = session.createCriteria(Article.class);
+//            cr.createAlias("journalist", "journalist");
+//            cr.add(Restrictions.eq("journalist.id", journalist.getId()));
+//            results = cr.list();
+//        }
+//        catch (HibernateException e) {
+//            e.printStackTrace();
+//        }
+//        finally {
+//            session.close();
+//        }
+//        return results;
+//    }
+
 
 //    public  ArrayList<Article> search(String values){
 //        ArrayList<Article> articles = null;

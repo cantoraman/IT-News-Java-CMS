@@ -1,17 +1,19 @@
-<h1>Journalist</h1>
-
+<h1>Meet...</h1>
 
 <div>
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-        </tr>
-        <tr>
-            <td>$journalist.getName()</td>
-            <td>$journalist.getDescription()</td>
-        </tr>
-    </table>
+
+            <h2>$journalist.getName()</h2>
+            <br>
+            <div>$journalist.getDescription()</div>
+            <br>
+            <div>
+                #foreach($article in $articles)
+                <tr>
+                    <h4><a href="/articles/$article.getId()">$article.getTitle()</a> $article.giveUserFriendlyDate()</h4>
+                </tr>
+                #end
+            </div>
+
 
 </div>

@@ -15,8 +15,8 @@ public class Seeds {
         DBHelper.deleteAll(Article.class);
         DBHelper.deleteAll(Journalist.class);
 
-        Journalist journalist1 = new Journalist("Matt", "Blake");
-        Journalist journalist2 = new Journalist("Elisa", "Woodheart");
+        Journalist journalist1 = new Journalist("Matt Blake", "Java Developer, Healthy Life Style Evangelist");
+        Journalist journalist2 = new Journalist("Elisa Woodheart", "Front End Wizard, Mother of All Dragons");
         DBHelper.save(journalist1);
         DBHelper.save(journalist2);
 

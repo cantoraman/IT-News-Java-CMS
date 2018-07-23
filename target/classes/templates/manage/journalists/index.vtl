@@ -14,6 +14,13 @@
         <tr>
             <td><a href="/journalist/$journalist.getId()">$journalist.getName()</a></td>
             <td>$journalist.getDescription()</td>
+            <td><a href="/journalist/$journalist.getId()/edit">edit</a></td>
+            <td>
+                <form method="post" action="/journalist/$journalist.getId()/delete">
+                    <input type="submit" value="Delete">
+
+                </form>
+            </td>
         </tr>
         #end
     </table>
