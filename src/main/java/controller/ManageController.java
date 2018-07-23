@@ -62,6 +62,16 @@ public class ManageController {
         }, new VelocityTemplateEngine());
 
 
+        get("/manage/journalists/:id/edit", (req, res) -> {
+            Map<String, Object> model = new HashMap();
+            int id = Integer.parseInt(req.params(":id"));
+            Journalist journalist = DBHelper.findById(id, Journalist.class);
+            model.put("journalist",journalist);
+            model.put("template", "templates/manage/journalists/edit.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
         post("/manage/articles/:id", (req, res) -> {
 
             //int journalistId = Integer.parseInt(req.queryParams("journalist"));
