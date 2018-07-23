@@ -118,4 +118,15 @@ public class Article {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         return sdf.format(date);
     }
+
+//    public static List<Article> search(String values, List<Article> articles){
+//        List<Article> articlesFound = null;
+//
+//        for (Article article : articles) {
+//            if (article.getBody().contains(values)){
+//             articlesFound.add(article);
+//            }
+//        }
+//         return articlesFound;
+//    }
 }

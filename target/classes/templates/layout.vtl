@@ -1,14 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Velocity Flights</title>
+
+    <title>ITnews</title>
+    <link rel="stylesheet" href="/style_head.css">
+    <link rel="stylesheet" href="/style_body.css">
 
 </head>
-<body>
-<!-- begin inner template-->
-<div class="container">
-    #parse( $template )
-</div>
-<!-- end inner template-->
+
+
+<body class="vbox viewport">
+    <header class="container-head">
+        <section class="main">
+            <div class="cols top"><h1>ITnews.co.uk</h1></div>
+            <div class="cols middle"><h5>The future is happening.</h5></div>
+
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li class="dropdown">
+                    <a class="dropbtn">Categories</a>
+                    <div class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="/categories">See all..</a>
+                    </div>
+                </li>
+                <li><a href="/journalist">Journalist</a></li>
+                <li class="dropdown" style="float:right">
+                    <a class="dropbtn">Manage</a>
+                    <div class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </header>
+    <section class="main hbox space-between">
+        <!-- begin inner template-->
+        <article>#parse( $template )</article>
+        <!-- end inner template-->
+        <aside>
+            <div class="right-menu-body">
+                <div class="menu">
+                    <div class="search">
+                        <form action="/">
+                            <input type="text" placeholder="Search.." name="search" id="search-input">
+                            <button type="submit" id="search-button">Go</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </section>
+    <footer>Footer</footer>
 </body>
 </html>

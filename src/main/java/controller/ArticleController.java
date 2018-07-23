@@ -4,6 +4,7 @@ import db.DBHelper;
 import models.Article;
 import models.Category;
 import models.Journalist;
+import org.hibernate.HibernateException;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -102,6 +103,14 @@ public class ArticleController {
 //            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
 //            model.put("journalists", journalists);
 //            return new ModelAndView(model, "templates/layout.vtl");
+//
+//        }, new VelocityTemplateEngine());
+
+//        get("/articles/search/:string", (req, res) ->{
+//
+//            Map<String, Object> model = new HashMap<>();
+//            model.put{"template","template/search.vlt");
+//
 //
 //        }, new VelocityTemplateEngine());
 
