@@ -1,5 +1,6 @@
 package controller;
 
+import db.DBArticle;
 import db.DBHelper;
 import models.Article;
 import models.Category;
@@ -28,7 +29,14 @@ public class ArticleController {
             Map<String, Object> model = new HashMap();
             model.put("template", "templates/article/index.vtl");
 
-            List<Article> articles = DBHelper.getAll(Article.class);
+            List<Article> articles;
+            if (req.queryParams("search") != null) {
+                articles = DBArticle.search(req.queryParams("search"));
+            }
+            else {
+                articles = DBHelper.getAll(Article.class);
+            }
+
             Article.orderListByDate(articles);
             model.put("articles", articles);
             return new ModelAndView(model, "templates/layout.vtl");
@@ -91,6 +99,20 @@ public class ArticleController {
             return new ModelAndView(model, "templates/layout.vtl");
 
         }, new VelocityTemplateEngine());
+
+
+//        get("/articles?search=:query", (req, res) -> {
+//
+//            String query = req.queryParams("query");
+//            List<Article> articles = DBArticle.search(query);
+//            Article.orderListByDate(articles);
+//
+//            Map<String, Object> model = new HashMap();
+//            model.put("template", "templates/article/search.vtl");
+//
+//            model.put("articles", articles);
+//            return new ModelAndView(model, "templates/layout.vtl");
+//        }, new VelocityTemplateEngine());
 
 
 //        get("/articles/:id/edit", (request, response) -> {
