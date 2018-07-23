@@ -17,8 +17,13 @@
         <br>
         <select name="category_id" id="category_id">
             #foreach ( $category in $categories )
-            <option value="$category">$category</option>
+            <option value="$category" #if($category == $article.getCategory())
+                                        selected
+                                        #end
+            >$category</option>
             #end
+            <!---->
+            <!--add default selector here-->
         </select>
         <br>
 
