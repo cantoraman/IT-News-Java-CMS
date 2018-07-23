@@ -1,9 +1,12 @@
+import db.DBArticle;
 import db.DBHelper;
+import db.DBJournalist;
 import models.Article;
 import models.Category;
 import models.Journalist;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Runner {
 
@@ -21,6 +24,12 @@ public class Runner {
     DBHelper.save(article1);
     DBHelper.save(article2);
     DBHelper.save(article3);
+
+
+//        List<Article> articles = DBHelper.getAll(Article.class);
+        List<Article> articlesFound = DBArticle.search("Java");
+
+        List<Article> articlesByJournalist = DBJournalist.getArticlesForJournalist(journalist1);
 
     }
 }
