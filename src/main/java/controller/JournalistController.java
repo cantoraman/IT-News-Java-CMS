@@ -98,7 +98,7 @@ public class JournalistController {
             Journalist journalist = DBHelper.findById(journalistId, Journalist.class);
             DBHelper.delete(journalist);
 
-            res.redirect("/journalist");
+            res.redirect("/manage/journalist");
             return null;
         }, new VelocityTemplateEngine());
 

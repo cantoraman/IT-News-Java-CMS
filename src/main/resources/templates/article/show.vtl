@@ -1,49 +1,29 @@
 <div class="row">
-    <div class="col col-span-1"><h1>$article.getTitle()</h1></div>
-    <div></div>
+    <div class="col col-span-1">
+        <strong class="article-journalist-title">$article.getTitle()</strong>
+        <table>
+            <tr>
+               <td>by <a href="/journalist/$article.getJournalist().getId()">$article.getJournalist().getName()</a></td>
+                <td style="float:right">$article.giveUserFriendlyDate()</td>
+            </tr>
+        </table>
+    </div>
 </div>
 <div class="row">
     <div class="col col-span-1">
-        <p>$article.getBody</p>
+        <p>$article.getBody()</p>
     </div>
 </div>
+<div class="row">
+    <div class="col col-span-1">
 
-
-<h1>Article</h1>
-
-
-<div>
-
-
-
-            <h2>$article.getTitle()</h2>
-
-
-
-
-            <p>$article.getBody()</p>
-
-    <p>Likes: $article.getLikes()</p>
-    <p>Dislikes: $article.getDislikes()</p>
-
-    <p>$article.giveUserFriendlyDate()</p>
-
-
-    <form action="/articles/$article.getId()/feedback" method="post">
-        <input type="hidden" id="like" name="feedback" value="like">
-        <input type="submit" name="Like" value="Like">
-    </form>
-
-    <form action="/articles/$article.getId()/feedback" method="post">
-        <input type="hidden" id="dislike" name="feedback" value="dislike">
-        <input type="submit" name="Dislike" value="Dislike">
-    </form>
-
-
-
-
-
-
-
-
+        <form action="/articles/$article.getId()/feedback" method="post">
+            <input type="hidden" id="dislike" name="feedback" value="dislike">
+            <input type="submit" name="Dislike" value="Dislike" class="feedback">
+        </form>
+        <form action="/articles/$article.getId()/feedback" method="post">
+            <input type="hidden" id="like" name="feedback" value="like">
+            <input type="submit" name="Like" value="Like" class="feedback">
+        </form>
+    </div>
 </div>
