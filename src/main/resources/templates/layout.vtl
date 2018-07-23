@@ -51,6 +51,12 @@
                     </div>
                 </div>
             </div>
+            #foreach ( $article in $trendingArticles )
+            <div class="search"><a href="/articles/$article.getId()">$article.getTitle()</a></div>
+            #if( $velocityCount > 5 )
+            #break
+            #end
+            #end
         </aside>
     </section>
     <footer>Footer</footer>
