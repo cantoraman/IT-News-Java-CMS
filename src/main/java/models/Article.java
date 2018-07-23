@@ -21,6 +21,8 @@ public class Article {
     private Journalist journalist;
     private Date date;
     private Category category;
+    private int likes;
+    private int dislikes;
 
 
     public Article(String title, String body, Category category, Journalist journalist) {
@@ -29,7 +31,8 @@ public class Article {
         this.category = category;
         this.journalist = journalist;
         this.date = new Date();
-
+        this.likes=0;
+        this.dislikes=0;
     }
 
     public Article(){}
@@ -112,6 +115,29 @@ public class Article {
     }
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    @Column(name = "likes")
+    public int getLikes() {
+        return likes;
+    }
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    @Column(name = "dislikes")
+    public int getDislikes() {
+        return dislikes;
+    }
+    public void setDislikes(int dislikes) {
+        this.dislikes = dislikes;
+    }
+
+    public void likeArticle(){
+        setLikes(getLikes()+1);
+    }
+    public void dislikeArticle(){
+        setLikes(getLikes()-1);
     }
 
     public String giveUserFriendlyDate() {
