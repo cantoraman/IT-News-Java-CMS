@@ -1,5 +1,6 @@
 package controller;
 
+import db.DBArticle;
 import db.DBHelper;
 import db.DBJournalist;
 import models.Article;
@@ -67,6 +68,11 @@ public class JournalistController {
             Journalist journalist = DBHelper.findById(id, Journalist.class);
             List<Article> articles = DBJournalist.getArticlesForJournalist(journalist);
             model.put("journalist", journalist);
+<<<<<<< HEAD
+=======
+            //List<Article> articles = DBArticle.getAllByJournalist(journalist);
+            List<Article> articles = DBJournalist.getArticlesForJournalist(journalist);
+>>>>>>> develop
             model.put("articles", articles);
             model.put("template", "templates/journalist/show.vtl");
             return new ModelAndView(model, "templates/layout.vtl");

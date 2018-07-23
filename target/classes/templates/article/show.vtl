@@ -12,12 +12,21 @@
 
             <p>$article.getBody()</p>
 
+    <p>Likes: $article.getLikes()</p>
+    <p>Dislikes: $article.getDislikes()</p>
 
     <p>$article.giveUserFriendlyDate()</p>
 
 
+    <form action="/articles/$article.getId()/feedback" method="post">
+        <input type="hidden" id="like" name="feedback" value="like">
+        <input type="submit" name="Like" value="Like">
+    </form>
 
-
+    <form action="/articles/$article.getId()/feedback" method="post">
+        <input type="hidden" id="dislike" name="feedback" value="dislike">
+        <input type="submit" name="Dislike" value="Dislike">
+    </form>
 
 
 

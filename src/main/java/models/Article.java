@@ -1,14 +1,12 @@
 package models;
 
 
+import org.apache.commons.lang.time.DateUtils;
 import org.hibernate.annotations.Cascade;
 
 import java.text.SimpleDateFormat;
 import javax.persistence.*;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name="articles")
@@ -21,6 +19,8 @@ public class Article {
     private Journalist journalist;
     private Date date;
     private Category category;
+    private int likes;
+    private int dislikes;
 
 
     public Article(String title, String body, Category category, Journalist journalist) {
@@ -29,16 +29,17 @@ public class Article {
         this.category = category;
         this.journalist = journalist;
         this.date = new Date();
-
+        this.likes=0;
+        this.dislikes=0;
     }
 
     public Article(){}
 
     public static void orderListByDate(List<Article> articles) {
-        Collections.sort(articles, articleComparator);
+        Collections.sort(articles, articleDateComparator);
     }
 
-    public static Comparator<Article> articleComparator
+    public static Comparator<Article> articleDateComparator
             = new Comparator<Article>() {
 
         public int compare(Article article1, Article article2) {
@@ -51,6 +52,44 @@ public class Article {
 
             //descending order
             return articleDate2.compareTo(articleDate1);
+        }
+    };
+
+
+
+
+    public static List<Article> orderListByPopularity(List<Article> articles, int days) {
+        //This method returns a list of articles if there isn't enough(3) articles to
+        Date today = new Date();
+        Date newDate = DateUtils.addDays(today,-days);
+        ArrayList<Article> limitedArticles= new ArrayList<>();
+        for(Article article : articles){
+            if (!article.getDate().before(newDate))
+                limitedArticles.add(article);
+
+        }
+
+        Collections.sort(limitedArticles, articlePopularityComparator);
+        if (limitedArticles.size()<3){
+            Article.orderListByDate(articles);
+            return articles;
+        }
+        return limitedArticles;
+    }
+
+    public static Comparator<Article> articlePopularityComparator
+            = new Comparator<Article>() {
+
+        public int compare(Article article1, Article article2) {
+
+            Integer article1Likes = article1.getLikes() - article1.getDislikes();
+            Integer article2Likes = article2.getLikes() - article2.getDislikes();
+
+            //ascending order
+            //return articleDate1.compareTo(articleDate2);
+
+            //descending order
+            return article2Likes.compareTo(article1Likes);
         }
     };
 
@@ -112,6 +151,29 @@ public class Article {
     }
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    @Column(name = "likes")
+    public int getLikes() {
+        return likes;
+    }
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    @Column(name = "dislikes")
+    public int getDislikes() {
+        return dislikes;
+    }
+    public void setDislikes(int dislikes) {
+        this.dislikes = dislikes;
+    }
+
+    public void likeArticle(){
+        setLikes(getLikes()+1);
+    }
+    public void dislikeArticle(){
+        setDislikes(getDislikes()+1);
     }
 
     public String giveUserFriendlyDate() {

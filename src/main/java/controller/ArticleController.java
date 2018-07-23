@@ -38,6 +38,7 @@ public class ArticleController {
             }
 
             Article.orderListByDate(articles);
+            Article.orderListByPopularity(articles, 3);
             model.put("articles", articles);
             return new ModelAndView(model, "templates/layout.vtl");
 
@@ -75,8 +76,6 @@ public class ArticleController {
             return null;
         }, new VelocityTemplateEngine());
 
-
-
         get("/articles/:id", (request, response) -> {
 
             Map<String, Object> model = new HashMap<>();
@@ -87,6 +86,24 @@ public class ArticleController {
             return new ModelAndView(model, "templates/layout.vtl");
 
         }, new VelocityTemplateEngine());
+
+        post("/articles/:id/feedback", (req, res) -> {
+            int articleId = Integer.parseInt(req.params(":id"));
+            Article article = DBHelper.findById(articleId, Article.class);
+            String feedBackValue= req.queryParams("feedback");
+
+            if (feedBackValue.equals("like"))
+                article.likeArticle();
+            else if (feedBackValue.equals("dislike"))
+                article.dislikeArticle();
+            DBHelper.update(article);
+
+            res.redirect("/articles");
+
+            return null;
+        }, new VelocityTemplateEngine());
+
+
 
         get("/articles/manage", (req, res) -> {
 
