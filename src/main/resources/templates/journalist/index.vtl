@@ -1,20 +1,21 @@
-<p class = "pageHeader"> All Journalist </p>
-
-
-<div>
-    <a href="/journalist/new" class="button center">Add Journalist</a>
+<div class="row">
+    <div class="col col-span-1"><h1>All Journalists</h1></div>
 </div>
-<div class="container">
-    <table>
-        <tr>
-            <th>First Name</th>
-            <th>Description</th>
-        </tr>
-        #foreach($journalist in $journalists)
-        <tr>
-            <td><a href="/journalist/$journalist.getId()">$journalist.getName()</a></td>
-            <td>$journalist.getDescription()</td>
-        </tr>
-        #end
-    </table>
+
+<div class="row">
+    <div class="col col-span-1">
+        <div class="container">
+            <table>
+                <tr>
+                    <th align="left">First Name</th>
+                </tr>
+                #foreach($journalist in $journalists)
+                <tr>
+                    <td><a href="/journalist/$journalist.getId()">$journalist.getName()</a></td>
+                    <td>$journalist.getDescription()</td>
+                </tr>
+                #end
+            </table>
+        </div>
+    </div>
 </div>

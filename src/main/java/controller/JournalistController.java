@@ -38,9 +38,8 @@ public class JournalistController {
 
         get("/journalist/new", (req, res) -> {
 
-
             Map<String, Object> model = new HashMap();
-            model.put("template", "templates/article/create.vtl");
+            model.put("template", "templates/journalist/create.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
 
         }, new VelocityTemplateEngine());
@@ -56,7 +55,7 @@ public class JournalistController {
             Journalist newJournalist = new Journalist(name, description);
             DBHelper.save(newJournalist);
 
-            res.redirect("/journalist");
+            res.redirect("/manage/journalist");
 
             return null;
         }, new VelocityTemplateEngine());

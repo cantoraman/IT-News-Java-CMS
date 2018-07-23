@@ -6,7 +6,6 @@
 .container-head{
   display: flex;
   flex-flow: row;
-	position: static;
 	height: fit-content;
 	position: static;
 }
@@ -26,6 +25,7 @@
 .top {
     background: #4D6D9A;
 		padding-top: 0.4em;
+		padding-left: 1em;
   }
 
 .cols, .top {
@@ -34,6 +34,7 @@
 .middle {
     background: #4D6D9A;
 		padding-bottom: 0.5em;
+		padding-left: 1em;
   }
 
 h1{
