@@ -15,7 +15,7 @@
                 #foreach($journalist in $journalists)
                 <tr>
                     <td><a href="/journalist/$journalist.getId()">$journalist.getName()</a></td>
-                    <td><a href="/journalist/$journalist.getId()/edit">edit</a></td>
+                    <td><a href="/manage/journalists/$journalist.getId()/edit">edit</a></td>
                     <td>
                         <form method="post" action="/journalist/$journalist.getId()/delete">
                             <input type="submit" value="Delete">

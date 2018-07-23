@@ -76,16 +76,6 @@ public class JournalistController {
         }, new VelocityTemplateEngine());
 
 
-        get("/journalist/:id/edit", (req, res) -> {
-            Map<String, Object> model = new HashMap();
-            int id = Integer.parseInt(req.params(":id"));
-            Journalist journalist = DBHelper.findById(id, Journalist.class);
-            model.put("journalist",journalist);
-            model.put("template", "templates/journalist/edit.vtl");
-            return new ModelAndView(model, "templates/layout.vtl");
-        }, new VelocityTemplateEngine());
-
-
         post("/journalist/:id", (req,res) ->{
 
             int journalistId = Integer.parseInt(req.params(":id"));
