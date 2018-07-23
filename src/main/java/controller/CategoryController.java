@@ -1,7 +1,6 @@
 package controller;
 
 import db.DBArticle;
-import db.DBHelper;
 import models.Article;
 import models.Category;
 import spark.ModelAndView;
@@ -9,7 +8,6 @@ import spark.template.velocity.VelocityTemplateEngine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.get;

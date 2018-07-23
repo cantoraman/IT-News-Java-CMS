@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col col-span-1"><h1>Editing $journalist.getName()</h1></div>
+</div>
+<div class="row">
+    <div class="col col-span-1">
+        <form action="/journalist/$journalist.getId()" method="post">
+
+            <p>
+                <label for="name">Full Name:</label>
+            </p>
+            <p>
+                <input type="text" id="name" name="name" placeholder="$journalist.getName()" required>
+            </p>
+
+            <p><label for="description">Description:</label></p>
+            <p><textarea row="20" cols="100" id="description" name="description"required/>$journalist.getDescription()</textarea></p>
+
+            <p><input type="submit" value="Save Changes" class="button" id="edit-button"></p>
+
+        </form>
+    </div>
+</div>

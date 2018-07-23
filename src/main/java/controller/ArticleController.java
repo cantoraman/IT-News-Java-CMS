@@ -5,7 +5,6 @@ import db.DBHelper;
 import models.Article;
 import models.Category;
 import models.Journalist;
-import org.hibernate.HibernateException;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -117,48 +116,5 @@ public class ArticleController {
 
         }, new VelocityTemplateEngine());
 
-
-//        get("/articles?search=:query", (req, res) -> {
-//
-//            String query = req.queryParams("query");
-//            List<Article> articles = DBArticle.search(query);
-//            Article.orderListByDate(articles);
-//
-//            Map<String, Object> model = new HashMap();
-//            model.put("template", "templates/article/search.vtl");
-//
-//            model.put("articles", articles);
-//            return new ModelAndView(model, "templates/layout.vtl");
-//        }, new VelocityTemplateEngine());
-
-
-//        get("/articles/:id/edit", (request, response) -> {
-//
-//            Map<String, Object> model = new HashMap<>();
-//            model.put("template", "templates/article/edit.vtl");
-//            int articleId = Integer.parseInt(request.params(":id"));
-//            Article article = DBHelper.findById(articleId, Article.class);
-//            model.put("article", article);
-//            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
-//            model.put("journalists", journalists);
-//            return new ModelAndView(model, "templates/layout.vtl");
-//
-//        }, new VelocityTemplateEngine());
-
-//        get("/articles/search/:string", (req, res) ->{
-//
-//            Map<String, Object> model = new HashMap<>();
-//            model.put{"template","template/search.vlt");
-//
-//
-//        }, new VelocityTemplateEngine());
-
-
-
-
-
     }
-
-
-
 }
