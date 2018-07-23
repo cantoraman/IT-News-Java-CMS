@@ -38,10 +38,10 @@ public class Article {
     public Article(){}
 
     public static void orderListByDate(List<Article> articles) {
-        Collections.sort(articles, articleComparator);
+        Collections.sort(articles, articleDateComparator);
     }
 
-    public static Comparator<Article> articleComparator
+    public static Comparator<Article> articleDateComparator
             = new Comparator<Article>() {
 
         public int compare(Article article1, Article article2) {
@@ -54,6 +54,26 @@ public class Article {
 
             //descending order
             return articleDate2.compareTo(articleDate1);
+        }
+    };
+
+    public static void orderListByPopularity(List<Article> articles) {
+        Collections.sort(articles, articlePopularityComparator);
+    }
+
+    public static Comparator<Article> articlePopularityComparator
+            = new Comparator<Article>() {
+
+        public int compare(Article article1, Article article2) {
+
+            Integer article1Likes = article1.getLikes();
+            Integer article2Likes = article2.getLikes();
+
+            //ascending order
+            //return articleDate1.compareTo(articleDate2);
+
+            //descending order
+            return article2Likes.compareTo(article1Likes);
         }
     };
 

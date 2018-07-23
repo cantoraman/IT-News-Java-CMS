@@ -38,6 +38,7 @@ public class ArticleController {
             }
 
             Article.orderListByDate(articles);
+            Article.orderListByPopularity(articles);
             model.put("articles", articles);
             return new ModelAndView(model, "templates/layout.vtl");
 

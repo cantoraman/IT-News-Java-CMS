@@ -22,7 +22,8 @@ public class Seeds {
 
 
         Article article1 = new Article("Java developers on Demand", "IT Companies demand Developers", Category.JAVA, journalist1);
-
+        article1.setLikes(5);
+        article1.setDislikes(2);
         DBHelper.save(article1);
         try {
             TimeUnit.SECONDS.sleep(1);
@@ -30,6 +31,8 @@ public class Seeds {
             e.printStackTrace();
         }
         Article article2 = new Article("Java developers close to kill each others", "IT Companies demand Developers", Category.JAVA, journalist1);
+        article2.setLikes(50);
+        article2.setDislikes(20);
         DBHelper.save(article2);
         try {
             TimeUnit.SECONDS.sleep(1);
@@ -38,6 +41,8 @@ public class Seeds {
         }
 
         Article article3 = new Article("Elon Musk makes space-pancakes!", "He makes awesome pancakes and hipsters lose their minds.", Category.TECH, journalist2);
+        article3.setLikes(1);
+        article3.setDislikes(90);
         DBHelper.save(article3);
 //
 //        Department department1 = new Department("HR");
