@@ -1,12 +1,11 @@
-<<<<<<< HEAD
 <div class="row">
     <div class="col col-span-1"><h1>Journalists</h1></div>
 </div>
 <div class="row">
+    <div class="col col-span-1"><a href="/journalist/new" class="button center">Add Journalist</a></div>
+</div>
+<div class="row">
     <div class="col col-span-1">
-        <div>
-            <a href="/journalist/new" class="button center">Add Journalist</a>
-        </div>
         <div class="container">
             <table>
                 <tr>
@@ -16,7 +15,6 @@
                 #foreach($journalist in $journalists)
                 <tr>
                     <td><a href="/journalist/$journalist.getId()">$journalist.getName()</a></td>
-                    <td><a href="/journalist/$journalist.getId()">$journalist.getDescription()</a></td>
                     <td><a href="/journalist/$journalist.getId()/edit">edit</a></td>
                     <td>
                         <form method="post" action="/journalist/$journalist.getId()/delete">
@@ -30,32 +28,3 @@
         </div>
     </div>
 </div>
-=======
-<p class = "pageHeader"> All Journalist </p>
-
-
-<div>
-    <a href="/journalist/new" class="button center">Add Journalist</a>
-</div>
-<div class="container">
-    <table>
-        <tr>
-            <th>First Name</th>
-            <th>Description</th>
-        </tr>
-        #foreach($journalist in $journalists)
-        <tr>
-            <td><a href="/journalist/$journalist.getId()">$journalist.getName()</a></td>
-            <td>$journalist.getDescription()</td>
-            <td><a href="/journalist/$journalist.getId()/edit">edit</a></td>
-            <td>
-                <form method="post" action="/journalist/$journalist.getId()/delete">
-                    <input type="submit" value="Delete">
-
-                </form>
-            </td>
-        </tr>
-        #end
-    </table>
-</div>
->>>>>>> develop

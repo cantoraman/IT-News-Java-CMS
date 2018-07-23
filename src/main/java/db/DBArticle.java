@@ -7,6 +7,8 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.ArrayList;
@@ -32,7 +34,9 @@ public class DBArticle {
         List<Article> results = null;
         try {
             Criteria cr = session.createCriteria(Article.class);
-            cr.add(Restrictions.ilike("title", query + "%"));
+            Criterion cr1 = Restrictions.ilike("title", query + "%", MatchMode.ANYWHERE);
+            Criterion cr2 = Restrictions.ilike("body", query + "%", MatchMode.ANYWHERE);
+            cr.add(Restrictions.or(cr1, cr2));
             results = cr.list();
         }
         catch (HibernateException e) {
