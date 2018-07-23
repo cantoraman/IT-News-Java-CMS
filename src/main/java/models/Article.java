@@ -59,6 +59,7 @@ public class Article {
 
 
     public static List<Article> orderListByPopularity(List<Article> articles, int days) {
+        //This method returns a list of articles if there isn't enough(3) articles to
         Date today = new Date();
         Date newDate = DateUtils.addDays(today,-days);
         ArrayList<Article> limitedArticles= new ArrayList<>();
@@ -81,8 +82,8 @@ public class Article {
 
         public int compare(Article article1, Article article2) {
 
-            Integer article1Likes = article1.getLikes();
-            Integer article2Likes = article2.getLikes();
+            Integer article1Likes = article1.getLikes() - article1.getDislikes();
+            Integer article2Likes = article2.getLikes() - article2.getDislikes();
 
             //ascending order
             //return articleDate1.compareTo(articleDate2);
