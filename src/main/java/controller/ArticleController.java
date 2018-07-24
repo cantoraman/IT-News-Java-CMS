@@ -32,8 +32,8 @@ public class ArticleController {
             model.put("template", "templates/article/index.vtl");
 
             List<Article> articles;
-            if (req.queryParams("search") != null) {
-                articles = DBArticle.search(req.queryParams("search"));
+            if (req.queryParams("query") != null) {
+                articles = DBArticle.search(req.queryParams("query"));
             }
             else {
                 articles = DBHelper.getAll(Article.class);
