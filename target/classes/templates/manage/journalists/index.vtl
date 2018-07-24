@@ -2,7 +2,7 @@
     <div class="col col-span-1"><h1>Journalists</h1></div>
 </div>
 <div class="row">
-    <div class="col col-span-1"><a href="/journalist/new" class="button center">Add Journalist</a></div>
+    <div class="col col-span-1"><a href="/journalists/new" class="button center">Add Journalist</a></div>
 </div>
 <div class="row">
     <div class="col col-span-1">
@@ -13,10 +13,10 @@
                 </tr>
                 #foreach($journalist in $journalists)
                 <tr>
-                    <td><a href="/journalist/$journalist.getId()">$journalist.getName()</a></td>
-                    <td><a href="/journalist/$journalist.getId()/edit">edit</a></td>
+                    <td><a href="/journalists/$journalist.getId()">$journalist.getName()</a></td>
+                    <td><a href="/journalists/$journalist.getId()/edit">edit</a></td>
                     <td>
-                        <form method="post" action="/journalist/$journalist.getId()/delete">
+                        <form method="post" action="/journalists/$journalist.getId()/delete">
                             <input type="submit" value="Delete">
 
                         </form>

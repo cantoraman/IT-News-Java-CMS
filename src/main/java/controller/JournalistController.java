@@ -23,7 +23,7 @@ public class JournalistController {
 
     public void setupEndPoints(){
 
-        get("/journalist", (req, res) -> {
+        get("/journalists", (req, res) -> {
 
             Map<String, Object> model = new HashMap();
             model.put("template", "templates/journalist/index.vtl");
@@ -35,7 +35,7 @@ public class JournalistController {
         }, new VelocityTemplateEngine());
 
 
-        get("/journalist/new", (req, res) -> {
+        get("/journalists/new", (req, res) -> {
 
             Map<String, Object> model = new HashMap();
             model.put("template", "templates/journalist/create.vtl");
@@ -45,7 +45,7 @@ public class JournalistController {
 
 
 
-        post("/journalist", (req, res) -> {
+        post("/journalists", (req, res) -> {
 
             String name = req.queryParams("name");
             String description = req.queryParams("description");
@@ -59,8 +59,19 @@ public class JournalistController {
             return null;
         }, new VelocityTemplateEngine());
 
+        get("/journalists/manage", (req, res) -> {
 
-        get ("/journalist/:id", (req, res)->{
+            Map<String, Object> model = new HashMap();
+            model.put("template", "templates/manage/journalists/index.vtl");
+
+            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
+            model.put("journalists", journalists);
+            return new ModelAndView(model, "templates/layout.vtl");
+
+        }, new VelocityTemplateEngine());
+
+
+        get ("/journalists/:id", (req, res)->{
             Map<String, Object> model = new HashMap<>();
             int id = Integer.parseInt(req.params(":id"));
             Journalist journalist = DBHelper.findById(id, Journalist.class);
@@ -74,7 +85,7 @@ public class JournalistController {
         }, new VelocityTemplateEngine());
 
 
-        get("/journalist/:id/edit", (req, res) -> {
+        get("/journalists/:id/edit", (req, res) -> {
             Map<String, Object> model = new HashMap();
             int id = Integer.parseInt(req.params(":id"));
             Journalist journalist = DBHelper.findById(id, Journalist.class);
@@ -85,7 +96,7 @@ public class JournalistController {
 
 
 
-        post("/journalist/:id", (req,res) ->{
+        post("/journalists/:id", (req,res) ->{
 
             int journalistId = Integer.parseInt(req.params(":id"));
             String name = req.queryParams("name");
@@ -101,7 +112,7 @@ public class JournalistController {
         }, new VelocityTemplateEngine());
 
 
-        post ("/journalist/:id/delete", (req, res) -> {
+        post ("/journalists/:id/delete", (req, res) -> {
 
             int journalistId = Integer.parseInt(req.params(":id"));
             Journalist journalist = DBHelper.findById(journalistId, Journalist.class);
@@ -113,16 +124,6 @@ public class JournalistController {
 
 
 
-        get("/journalists/manage", (req, res) -> {
-
-            Map<String, Object> model = new HashMap();
-            model.put("template", "templates/manage/journalists/index.vtl");
-
-            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
-            model.put("journalists", journalists);
-            return new ModelAndView(model, "templates/layout.vtl");
-
-        }, new VelocityTemplateEngine());
 
 
 
