@@ -23,9 +23,12 @@ public class ArticleController {
 
     public void setupEndPoints(){
 
+
+
+
         get("/articles", (req, res) -> {
 
-            Map<String, Object> model = new HashMap();
+            Map<String, Object> model = createModel();
             model.put("template", "templates/article/index.vtl");
 
             List<Article> articles;
@@ -106,7 +109,7 @@ public class ArticleController {
 
         get("/articles/manage", (req, res) -> {
 
-            Map<String, Object> model = new HashMap();
+            Map<String, Object> model = createModel();
             model.put("template", "templates/manage/articles/index.vtl");
 
             List<Article> articles = DBHelper.getAll(Article.class);
@@ -116,5 +119,17 @@ public class ArticleController {
 
         }, new VelocityTemplateEngine());
 
+
+    }
+
+    public static Map<String, Object> createModel() {
+        Map<String, Object> model = new HashMap();
+        List<Article> articles = DBHelper.getAll(Article.class);
+        Article.orderListByDate(articles);
+        List<Article> trendingArticles = Article.orderListByPopularity(articles,3);
+        model.put("trendingArticles", trendingArticles);
+        model.put("categories", Category.values());
+        model.put("articles", articles);
+        return model;
     }
 }

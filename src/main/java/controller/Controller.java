@@ -3,6 +3,7 @@ package controller;
 import db.DBHelper;
 import db.Seeds;
 import models.Article;
+import models.Category;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -24,23 +25,27 @@ public class Controller {
 
             ArticleController articleController = new ArticleController();
             JournalistController journalistController = new JournalistController();
-            ManageController manageController = new ManageController();
             CategoryController categoryController = new CategoryController();
 
 
             get("/", (req, res) -> {
-
-                Map<String, Object> model = new HashMap();
+                Map<String, Object> model = createModel();
                 model.put("template", "templates/index.vtl");
-                List<Article> articles = DBHelper.getAll(Article.class);
-                List<Article> trendingArticles = Article.orderListByPopularity(articles,3);
-                Article.orderListByDate(articles);
-                model.put("articles", articles);
-                model.put("trendingArticles", trendingArticles);
                 return new ModelAndView(model, "templates/layout.vtl");
             }, velocityTemplateEngine);
 
 
+        }
+
+        public static Map<String, Object> createModel() {
+            Map<String, Object> model = new HashMap();
+            List<Article> articles = DBHelper.getAll(Article.class);
+            Article.orderListByDate(articles);
+            List<Article> trendingArticles = Article.orderListByPopularity(articles,3);
+            model.put("trendingArticles", trendingArticles);
+            model.put("categories", Category.values());
+            model.put("articles", articles);
+            return model;
         }
 
 

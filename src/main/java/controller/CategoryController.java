@@ -8,6 +8,7 @@ import spark.template.velocity.VelocityTemplateEngine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.get;
@@ -35,6 +36,7 @@ public CategoryController(){
 
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/categories/show.vtl");
+
             String categoryString = request.params(":category");
             Category categoryEnum = Category.valueOf(categoryString);
             ArrayList<Article> articles = DBArticle.getAllByCategory(categoryEnum);

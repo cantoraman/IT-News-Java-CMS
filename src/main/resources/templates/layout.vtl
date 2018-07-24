@@ -20,8 +20,12 @@
                 <li class="dropdown">
                     <a class="dropbtn">Categories</a>
                     <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
+                        #foreach ($category in $categories)
+                        <a href="/categories/$category">$category.getName()</a>
+                            #if ($velocityCount == 5)
+                        #break
+                        #end
+                        #end
                         <a href="/categories">See all..</a>
                     </div>
                 </li>
