@@ -36,7 +36,7 @@ public class JournalistController {
         }, new VelocityTemplateEngine());
 
 
-        get("/journalist/new", (req, res) -> {
+        get("/journalist/new", (req, res) -> {git
 
             Map<String, Object> model = new HashMap();
             model.put("template", "templates/journalist/create.vtl");
