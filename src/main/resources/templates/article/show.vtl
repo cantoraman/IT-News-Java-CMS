@@ -17,11 +17,11 @@
 <div class="row">
     <div class="col col-span-1">
 
-        <form action="/article/$article.getId()/feedback" method="post">
+        <form action="/articles/$article.getId()/feedback" method="post">
             <input type="hidden" id="dislike" name="feedback" value="dislike">
             <input type="submit" name="Dislike" value="Dislike" class="feedback">
         </form>
-        <form action="/article/$article.getId()/feedback" method="post">
+        <form action="/articles/$article.getId()/feedback" method="post">
             <input type="hidden" id="like" name="feedback" value="like">
             <input type="submit" name="Like" value="Like" class="feedback">
         </form>

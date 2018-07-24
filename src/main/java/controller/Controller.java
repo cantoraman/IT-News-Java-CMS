@@ -24,7 +24,6 @@ public class Controller {
 
             ArticleController articleController = new ArticleController();
             JournalistController journalistController = new JournalistController();
-            ManageController manageController = new ManageController();
             CategoryController categoryController = new CategoryController();
 
 

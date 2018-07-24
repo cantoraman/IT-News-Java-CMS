@@ -44,7 +44,7 @@ public class ArticleController {
         }, new VelocityTemplateEngine());
 
 
-        get("/article/new", (req, res) -> {
+        get("/articles/new", (req, res) -> {
 
 
             Map<String, Object> model = new HashMap();
@@ -58,7 +58,7 @@ public class ArticleController {
 
 
 
-        post("/article", (req, res) -> {
+        post("/articles", (req, res) -> {
 
             int journalistId = Integer.parseInt(req.queryParams("journalist_id"));
             Journalist journalist = DBHelper.findById(journalistId, Journalist.class);
@@ -75,7 +75,18 @@ public class ArticleController {
             return null;
         }, new VelocityTemplateEngine());
 
-        get("/article/:id", (request, response) -> {
+        get("/articles/manage", (req, res) -> {
+
+            Map<String, Object> model = new HashMap();
+            model.put("template", "templates/manage/articles/index.vtl");
+
+            List<Article> articles = DBHelper.getAll(Article.class);
+            Article.orderListByDate(articles);
+            model.put("articles", articles);
+            return new ModelAndView(model, "templates/layout.vtl");
+
+        }, new VelocityTemplateEngine());
+        get("/articles/:id", (request, response) -> {
 
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/article/show.vtl");
@@ -87,7 +98,7 @@ public class ArticleController {
         }, new VelocityTemplateEngine());
 
 
-        get("/article/:id/edit", (request, response) -> {
+        get("/articles/:id/edit", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/article/edit.vtl");
             int articleId = Integer.parseInt(request.params(":id"));
@@ -103,7 +114,7 @@ public class ArticleController {
         }, new VelocityTemplateEngine());
 
 
-        post("/article/:id", (req, res) -> {
+        post("/articles/:id", (req, res) -> {
 
 //            int journalistId = Integer.parseInt(req.queryParams("journalist"));
 //            Journalist journalist = DBHelper.findById(journalistId, Journalist.class);
@@ -126,7 +137,7 @@ public class ArticleController {
         }, new VelocityTemplateEngine());
 
 
-        post("/article/:id/delete", (req, res) -> {
+        post("/articles/:id/delete", (req, res) -> {
             int articleId = Integer.parseInt(req.params(":id"));
             Article article = DBHelper.findById(articleId, Article.class);
             DBHelper.delete(article);
@@ -137,7 +148,7 @@ public class ArticleController {
         }, new VelocityTemplateEngine());
 
 
-        post("/article/:id/feedback", (req, res) -> {
+        post("/articles/:id/feedback", (req, res) -> {
             int articleId = Integer.parseInt(req.params(":id"));
             Article article = DBHelper.findById(articleId, Article.class);
             String feedBackValue= req.queryParams("feedback");
@@ -148,24 +159,13 @@ public class ArticleController {
                 article.dislikeArticle();
             DBHelper.update(article);
 
-            res.redirect("/article/:id");
+            res.redirect("/articles");
 
             return null;
         }, new VelocityTemplateEngine());
 
 
 
-        get("/articles/manage", (req, res) -> {
-
-            Map<String, Object> model = new HashMap();
-            model.put("template", "templates/manage/articles/index.vtl");
-
-            List<Article> articles = DBHelper.getAll(Article.class);
-            Article.orderListByDate(articles);
-            model.put("articles", articles);
-            return new ModelAndView(model, "templates/layout.vtl");
-
-        }, new VelocityTemplateEngine());
 
     }
 }

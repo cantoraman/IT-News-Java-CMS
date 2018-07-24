@@ -112,7 +112,8 @@ public class Article {
         this.title = title;
     }
 
-    @Column(name="body")
+    @Lob
+    @Column(columnDefinition="TEXT")
     public String getBody() {
         return body;
     }

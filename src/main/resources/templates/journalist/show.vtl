@@ -10,7 +10,7 @@
             #foreach ($article in $articles)
                 <tr>
 
-                    <td class="article-journalist-title"><strong><a href="/article/$article.getId()">$article.getTitle()</a></strong></td>
+                    <td class="article-journalist-title"><strong><a href="/articles/$article.getId()">$article.getTitle()</a></strong></td>
 
                     <td class="article-journalist-title" style="float:right">$article.giveUserFriendlyDate()</td>
                     </tr>
