@@ -10,9 +10,17 @@
 	position: static;
 }
 
+body{
+	background: url("/images/bg.png");
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
 .main {
   width: 100%;
-  background-color: white;
+
   display: flex;
   flex-direction: column;
   flex: 1;
