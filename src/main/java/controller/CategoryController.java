@@ -1,6 +1,7 @@
 package controller;
 
 import db.DBArticle;
+import db.DBHelper;
 import models.Article;
 import models.Category;
 import spark.ModelAndView;
@@ -24,7 +25,7 @@ public CategoryController(){
 
         get("/categories", (req, res) -> {
 
-            Map<String, Object> model = new HashMap();
+            Map<String, Object> model = createModel();
             model.put("template", "templates/categories/index.vtl");
             model.put("categories", Category.values());
             return new ModelAndView(model, "templates/layout.vtl");
@@ -34,7 +35,7 @@ public CategoryController(){
 
         get("/categories/:category", (request, response) -> {
 
-            Map<String, Object> model = new HashMap<>();
+            Map<String, Object> model = createModel();
             model.put("template", "templates/categories/show.vtl");
 
             String categoryString = request.params(":category");
@@ -46,24 +47,17 @@ public CategoryController(){
 
         }, new VelocityTemplateEngine());
 
-
-
-
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public static Map<String, Object> createModel() {
+        Map<String, Object> model = new HashMap();
+        List<Article> articles = DBHelper.getAll(Article.class);
+        Article.orderListByDate(articles);
+        List<Article> trendingArticles = Article.orderListByPopularity(articles,3);
+        model.put("trendingArticles", trendingArticles);
+        model.put("categories", Category.values());
+        model.put("articles", articles);
+        return model;
     }
+
+}

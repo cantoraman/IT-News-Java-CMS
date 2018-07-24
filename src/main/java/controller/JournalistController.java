@@ -3,6 +3,7 @@ package controller;
 import db.DBHelper;
 import db.DBJournalist;
 import models.Article;
+import models.Category;
 import models.Journalist;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -25,7 +26,7 @@ public class JournalistController {
 
         get("/journalists", (req, res) -> {
 
-            Map<String, Object> model = new HashMap();
+            Map<String, Object> model = createModel();
             model.put("template", "templates/journalist/index.vtl");
 
             List<Journalist> journalists = DBHelper.getAll(Journalist.class);
@@ -35,13 +36,9 @@ public class JournalistController {
         }, new VelocityTemplateEngine());
 
 
-<<<<<<< HEAD
-        get("/journalist/new", (req, res) -> {
-=======
         get("/journalists/new", (req, res) -> {
->>>>>>> develop
 
-            Map<String, Object> model = new HashMap();
+            Map<String, Object> model = createModel();
             model.put("template", "templates/journalist/create.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
 
@@ -65,7 +62,7 @@ public class JournalistController {
 
         get("/journalists/manage", (req, res) -> {
 
-            Map<String, Object> model = new HashMap();
+            Map<String, Object> model = createModel();
             model.put("template", "templates/manage/journalists/index.vtl");
 
             List<Journalist> journalists = DBHelper.getAll(Journalist.class);
@@ -90,7 +87,7 @@ public class JournalistController {
 
 
         get("/journalists/:id/edit", (req, res) -> {
-            Map<String, Object> model = new HashMap();
+            Map<String, Object> model = createModel();
             int id = Integer.parseInt(req.params(":id"));
             Journalist journalist = DBHelper.findById(id, Journalist.class);
             model.put("journalist",journalist);
@@ -125,11 +122,17 @@ public class JournalistController {
             res.redirect("/journalists/manage");
             return null;
         }, new VelocityTemplateEngine());
+    }
 
 
-
-
-
-
+    public static Map<String, Object> createModel() {
+        Map<String, Object> model = new HashMap();
+        List<Article> articles = DBHelper.getAll(Article.class);
+        Article.orderListByDate(articles);
+        List<Article> trendingArticles = Article.orderListByPopularity(articles,3);
+        model.put("trendingArticles", trendingArticles);
+        model.put("categories", Category.values());
+        model.put("articles", articles);
+        return model;
     }
 }

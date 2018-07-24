@@ -50,7 +50,7 @@ public class ArticleController {
         get("/articles/new", (req, res) -> {
 
 
-            Map<String, Object> model = new HashMap();
+            Map<String, Object> model = createModel();
             List<Journalist> journalists = DBHelper.getAll(Journalist.class);
             model.put("journalists", journalists);
             model.put("categories", Category.values());
@@ -80,7 +80,7 @@ public class ArticleController {
 
         get("/articles/manage", (req, res) -> {
 
-            Map<String, Object> model = new HashMap();
+            Map<String, Object> model = createModel();
             model.put("template", "templates/manage/articles/index.vtl");
 
             List<Article> articles = DBHelper.getAll(Article.class);
@@ -119,8 +119,8 @@ public class ArticleController {
 
         post("/articles/:id", (req, res) -> {
 
-//            int journalistId = Integer.parseInt(req.queryParams("journalist"));
-//            Journalist journalist = DBHelper.findById(journalistId, Journalist.class);
+            int journalistId = Integer.parseInt(req.queryParams("journalist_id"));
+            Journalist journalist = DBHelper.findById(journalistId, Journalist.class);
             int articleId = Integer.parseInt(req.params(":id"));
             String title = req.queryParams("title");
             String body = req.queryParams("body");
@@ -130,6 +130,7 @@ public class ArticleController {
             Article article = DBHelper.findById(articleId, Article.class);
             article.setTitle(title);
             article.setBody(body);
+            article.setJournalist(journalist);
             article.setCategory(Category.valueOf(category));
 
             DBHelper.update(article);
@@ -168,8 +169,6 @@ public class ArticleController {
         }, new VelocityTemplateEngine());
 
 
-
-<<<<<<< HEAD
         get("/articles/manage", (req, res) -> {
 
             Map<String, Object> model = createModel();
@@ -181,8 +180,7 @@ public class ArticleController {
             return new ModelAndView(model, "templates/layout.vtl");
 
         }, new VelocityTemplateEngine());
-=======
->>>>>>> develop
+
 
 
     }
