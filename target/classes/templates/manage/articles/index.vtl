@@ -16,9 +16,9 @@
                 <tr>
                     <td><a href="/articles/$article.getId()">$article.getTitle()</a></td>
                     <td>$article.getDate()</td>
-                    <td><a href="/manage/articles/$article.getId()/edit">edit</a></td>
+                    <td><a href="/articles/$article.getId()/edit">edit</a></td>
                     <td>
-                        <form method="post" action="/manage/articles/$article.getId()/delete">
+                        <form method="post" action="/articles/$article.getId()/delete">
                             <input type="submit" value="Delete">
 
                         </form>
