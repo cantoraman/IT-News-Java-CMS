@@ -32,11 +32,11 @@ public class Controller {
 
                 Map<String, Object> model = new HashMap();
                 model.put("template", "templates/index.vtl");
-
-
                 List<Article> articles = DBHelper.getAll(Article.class);
+                List<Article> trendingArticles = Article.orderListByPopularity(articles,3);
                 Article.orderListByDate(articles);
                 model.put("articles", articles);
+                model.put("trendingArticles", trendingArticles);
                 return new ModelAndView(model, "templates/layout.vtl");
             }, velocityTemplateEngine);
 
