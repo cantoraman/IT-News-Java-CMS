@@ -77,6 +77,7 @@ public class JournalistController {
             int id = Integer.parseInt(req.params(":id"));
             Journalist journalist = DBHelper.findById(id, Journalist.class);
             List<Article> articles = DBJournalist.getArticlesForJournalist(journalist);
+            Article.orderListByDate(articles);
             model.put("journalist", journalist);
 
             model.put("articles", articles);

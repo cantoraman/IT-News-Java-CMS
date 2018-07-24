@@ -79,6 +79,7 @@ html, body, .viewport {
   margin-top: 8px;
   font-size: 17px;
   justify-content: center;
+  width: 100%
 }
 
 #search-input{
@@ -86,7 +87,7 @@ html, body, .viewport {
   margin-top: 8px;
   font-size: 17px;
   border: none;
-  width: auto;
+  width: 80%;
 }
 
 #search-button{
@@ -135,7 +136,7 @@ html, body, .viewport {
 
 #description, #artibody{
   width: 98%;
-  height: 17em;
+  height: 18em;
   overflow: auto;
   display: flex;
   resize: none;
@@ -184,4 +185,25 @@ table{
 
 .title-edit-article{
   width: 98%;
+}
+
+#trend{
+  text-decoration: underline;
+  margin: auto;
+  margin-top: 30%;
+  text-align: center;
+}
+
+#trend-links{
+  margin: auto;
+  padding-top: 1.4rem;
+}
+
+#table-likes{
+  border: 1px solid black;
+  border-radius: 1em;
+  background-color: #a59db6;
+}
+#table2 {
+  width: 0;
 }

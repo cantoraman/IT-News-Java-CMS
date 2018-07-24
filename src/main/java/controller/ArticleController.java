@@ -29,7 +29,7 @@ public class ArticleController {
         get("/articles", (req, res) -> {
 
             Map<String, Object> model = createModel();
-            model.put("template", "templates/article/index.vtl");
+            model.put("template", "templates/index.vtl");
 
             List<Article> articles;
             if (req.queryParams("query") != null) {

@@ -16,15 +16,27 @@
     </div>
 </div>
 <div class="row">
-    <div class="col col-span-1">
+    <div id="table-likes">
+        <table id="table2">
+            <tr>
+                <td>$article.getLikes()</td>
+                <td>
+                    <form action="/articles/$article.getId()/feedback" method="post">
+                    <input type="hidden" id="like" name="feedback" value="like">
+                    <input type="submit" name="Like" value="Like" class="feedback">
+                    </form>
 
+                </td>
+                <td>
         <form action="/articles/$article.getId()/feedback" method="post">
-            <input type="hidden" id="dislike" name="feedback" value="dislike">
-            <input type="submit" name="Dislike" value="Dislike" class="feedback">
-        </form>
-        <form action="/articles/$article.getId()/feedback" method="post">
-            <input type="hidden" id="like" name="feedback" value="like">
-            <input type="submit" name="Like" value="Like" class="feedback">
-        </form>
+                    <input type="hidden" id="dislike" name="feedback" value="dislike">
+                    <input type="submit" name="Dislike" value="Dislike" class="feedback">
+                </form>
+                </td>
+                <td>
+        $article.getDislikes()
+                </td>
+            </tr>
+        </table>
     </div>
 </div>

@@ -55,12 +55,17 @@
                     </div>
                 </div>
             </div>
+            <div></div>
+            <p id="trend"><strong>Trends of the Week</strong></p>
+            <ol>
             #foreach ( $article in $trendingArticles )
-            <div class="search"><a href="/articles/$article.getId()">$article.getTitle()</a></div>
+            <li><a id="trend-links" href="/articles/$article.getId()">$article.getTitle()</a></li>
             #if( $velocityCount > 5 )
             #break
             #end
             #end
+            </ol>
+            </div>
         </aside>
     </section>
 </body>
