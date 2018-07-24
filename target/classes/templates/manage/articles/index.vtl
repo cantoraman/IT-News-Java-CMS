@@ -14,7 +14,7 @@
                 </tr>
                 #foreach($article in $articles)
                 <tr>
-                    <td><a href="/article/$article.getId()">$article.getTitle()</a></td>
+                    <td><a href="/articles/$article.getId()">$article.getTitle()</a></td>
                     <td>$article.getDate()</td>
                     <td><a href="/manage/articles/$article.getId()/edit">edit</a></td>
                     <td>

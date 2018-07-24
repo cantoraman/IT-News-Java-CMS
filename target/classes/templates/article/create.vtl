@@ -1,30 +1,43 @@
-<h1>New Article</h1>
+<div class="row">
+    <div class="col col-span-1"><h1>New Article</h1></div>
+</div>
+<div class="row">
+    <div class="col col-span-1">
+        <form action="/manage/articles/" method="post">
 
+            <p><label for="title">Title</label></p>
+            <p><input type="text" class="title-edit-article" id ="title" name="title" placeholder="Insert Title" required></p>
+            <br>
+            <p><label for="artibody">Body</label></p>
+            <p><textarea name="body" id="artibody" placeholder="What's going on?" required></textarea></p>
 
-<form action="/articles" method="post">
-    <label for="title">Title</label>
-    <br>
-    <input type="text" id ="title" name="title" required>
-    <br>
-    <label for="body">Body</label>
-    <br>
-    <textarea rows="20" cols="100" name="body" maxlength="250" id="body" required/></textarea>
-    <br>
-    <label for="category_id">Category</label>
-        <select name="category_id" id="category_id">
-            #foreach ( $category in $categories )
-            <option value="$category">$category</option>
-            #end
-        </select>
+            <table>
+                <tr>
+                    <td><label for="category_id">Category</label></td>
+                    <td><label for="journalist_id">Journalist</label></td>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="category_id" id="category_id">
+                            #foreach ( $category in $categories )
+                            <option value="$category">$category</option>
+                            #end
+                        </select>
+                    </td>
+                    <td>
+                        <select name="journalist_id" id="journalist_id">
+                            #foreach ( $journalist in $journalists )
+                            <option value="$journalist.id">$journalist.getName()</option>
+                            #end
+                        </select>
+                    </td>
+                </tr>
+            </table>
 
+            <input type="submit" class="button" id="edit-button" value="Save">
 
-   <label for="journalist_id">Journalist</label>
-        <select name="journalist_id" id="journalist_id">
-            #foreach ( $journalist in $journalists )
-            <option value="$journalist.id">$journalist.getName()</option>
-            #end
-        </select>
+        </form>
 
-    <input type="submit" value="Save">
-
-</form>
+    </div>
+</div>
+m>
