@@ -1,6 +1,5 @@
 package controller;
 
-import db.DBArticle;
 import db.DBHelper;
 import db.DBJournalist;
 import models.Article;
@@ -36,7 +35,7 @@ public class JournalistController {
         }, new VelocityTemplateEngine());
 
 
-        get("/journalist/new", (req, res) -> {git
+        get("/journalist/new", (req, res) -> {
 
             Map<String, Object> model = new HashMap();
             model.put("template", "templates/journalist/create.vtl");
@@ -55,7 +54,7 @@ public class JournalistController {
             Journalist newJournalist = new Journalist(name, description);
             DBHelper.save(newJournalist);
 
-            res.redirect("/manage/journalist");
+            res.redirect("/journalists/manage");
 
             return null;
         }, new VelocityTemplateEngine());
@@ -75,6 +74,17 @@ public class JournalistController {
         }, new VelocityTemplateEngine());
 
 
+        get("/journalist/:id/edit", (req, res) -> {
+            Map<String, Object> model = new HashMap();
+            int id = Integer.parseInt(req.params(":id"));
+            Journalist journalist = DBHelper.findById(id, Journalist.class);
+            model.put("journalist",journalist);
+            model.put("template", "templates/journalist/edit.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
+
         post("/journalist/:id", (req,res) ->{
 
             int journalistId = Integer.parseInt(req.params(":id"));
@@ -85,7 +95,7 @@ public class JournalistController {
             journalist.setName(name);
             journalist.setDescription(description);
             DBHelper.update(journalist);
-            res.redirect("/manage/journalist");
+            res.redirect("/journalists/manage");
             return null;
 
         }, new VelocityTemplateEngine());
@@ -97,10 +107,22 @@ public class JournalistController {
             Journalist journalist = DBHelper.findById(journalistId, Journalist.class);
             DBHelper.delete(journalist);
 
-            res.redirect("/manage/journalist");
+            res.redirect("/journalists/manage");
             return null;
         }, new VelocityTemplateEngine());
 
+
+
+        get("/journalists/manage", (req, res) -> {
+
+            Map<String, Object> model = new HashMap();
+            model.put("template", "templates/manage/journalists/index.vtl");
+
+            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
+            model.put("journalists", journalists);
+            return new ModelAndView(model, "templates/layout.vtl");
+
+        }, new VelocityTemplateEngine());
 
 
 

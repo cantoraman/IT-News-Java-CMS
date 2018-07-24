@@ -1,7 +1,7 @@
 <h1>All Articles</h1>
 
 <div>
-    <a href="/articles/new">New Article</a>
+    <a href="/article/new">New Article</a>
     <table>
 
 
@@ -9,7 +9,7 @@
 
         #foreach($article in $articles)
         <tr>
-             <td> <a href="/articles/$article.getId()"> $article.getTitle()</a></td> <td><a href="/journalists/$article.getJournalist().getId()"> $article.getJournalist().getName()</a></td><td>$article.giveUserFriendlyDate()</td>
+             <td> <a href="/article/$article.getId()"> $article.getTitle()</a></td> <td><a href="/journalists/$article.getJournalist().getId()"> $article.getJournalist().getName()</a></td><td>$article.giveUserFriendlyDate()</td>
 
         </tr>
         #end
