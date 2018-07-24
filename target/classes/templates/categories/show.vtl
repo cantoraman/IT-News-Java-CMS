@@ -1,29 +1,20 @@
-<h1>Articles In $category Category</h1>
-
-
-<div>
-
-    <table>
-
-        #foreach($article in $articles)
-        <tr>
-            <td> <a href="/articles/$article.getId()"> $article.getTitle()</a></td> <td><a href="/journalists/$article.getJournalist().getId()"> $article.getJournalist().getName()</a></td><td>$article.giveUserFriendlyDate()</td>
-
-        </tr>
-        #end
-
-
-
-    </table>
-
-
-
-
-
-
-
-
-
-
-
+<div class="row">
+    <div class="col col-span-1">
+        <h1>Articles about $category</h1>
+    </div>
 </div>
+
+#foreach ($article in $articles)
+<div class="row">
+    <div class="col col-span-1">
+        <p><h2><a href="/articles/$article.getId()">$article.getTitle()</a></h2></p>
+        <p>#if ($article.getBody().length() > 200)
+            $article.getBody().substring(0,200)
+            ...
+            #else
+            $article.getBody()
+            #end
+        </p>
+    </div>
+</div>
+#end

@@ -73,7 +73,7 @@ public class JournalistController {
 
 
         get ("/journalists/:id", (req, res)->{
-            Map<String, Object> model = new HashMap<>();
+            Map<String, Object> model = createModel();
             int id = Integer.parseInt(req.params(":id"));
             Journalist journalist = DBHelper.findById(id, Journalist.class);
             List<Article> articles = DBJournalist.getArticlesForJournalist(journalist);

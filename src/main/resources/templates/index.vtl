@@ -2,6 +2,13 @@
     <div class="row">
         <div class="col col-span-1">
             <p><h2><a href="/articles/$article.getId()">$article.getTitle()</a></h2></p>
+            <table>
+                <tr>
+                    <td>by <a href="/journalists/$article.getJournalist().getId()">$article.getJournalist().getName()</a>,
+                        <a href="/categories/$article.category">$article.category.getName()</a></td>
+                    <td style="float:right">$article.giveUserFriendlyDate()</td>
+                </tr>
+            </table>
             <p>#if ($article.getBody().length() > 200)
                 $article.getBody().substring(0,200)
                 ...

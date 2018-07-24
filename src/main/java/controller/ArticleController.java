@@ -89,9 +89,25 @@ public class ArticleController {
             return new ModelAndView(model, "templates/layout.vtl");
 
         }, new VelocityTemplateEngine());
+
+
+        get("/articles?search=:query", (req, res) -> {
+
+            String query = req.queryParams("query");
+            List<Article> articlesSearch = DBArticle.search("query");
+            Article.orderListByDate(articlesSearch);
+
+            Map<String, Object> model = createModel();
+            model.put("template", "templates/article/search.vtl");
+
+            model.put("articles", articlesSearch);
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
         get("/articles/:id", (request, response) -> {
 
-            Map<String, Object> model = new HashMap<>();
+            Map<String, Object> model = createModel();
             model.put("template", "templates/article/show.vtl");
             int articleId = Integer.parseInt(request.params(":id"));
             Article article = DBHelper.findById(articleId, Article.class);
@@ -180,6 +196,9 @@ public class ArticleController {
             return new ModelAndView(model, "templates/layout.vtl");
 
         }, new VelocityTemplateEngine());
+
+
+
 
 
 
