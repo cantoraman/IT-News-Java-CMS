@@ -14,7 +14,7 @@ Collaboration with Jesus Perez Marin. Built in 6 days, followed by a presentatio
 * JUnit
 
 ## Installing
-Download & unpack folder
-Open in your IDE
-Run 'MainController'
-Load http://localhost:4567
+- Download & unpack folder
+- Open in your IDE
+- Run 'Controller'
+- Load http://localhost:4567
