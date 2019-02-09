@@ -1,14 +1,18 @@
-# IT-News / News App
+# IT-News / News App / CMS
 
 ## Synopsis
-A news app where the authors/editors can create, edit, delete articles and add tags. Visitors can upvote and downvote articles. The app displays recent articles and favourite articles of the week.
+A news app where the authors/editors can create, edit, delete articles, authors, and tags. 
+Visitors can up vote and down vote articles. The front page displays excerpts of the recent articles and the favourite articles of the week.
 
-Collaboration with Jesus Perez Marin. Built in 6 days, followed by a presentation on the final day. 
+The app can be used as a Content Management System template for other projects as well. Uses MVC pattern to display.
+
+Built in collaboration with Jesus Perez Marin.
+
 
 ## Tech
 * Java
 * Hibernate
-* HTML/CSS
+* HTML5/CSS3
 * Spark
 * Velocity
 * JUnit
